@@ -73,4 +73,20 @@ export const projects: Project[] = [
     tags: ["Python", "AI APIs", "Redis", "Docker", "PostgreSQL"],
     // TODO: Add live URL when available
   },
+  {
+    id: "investment-platform",
+    title: "Investment Platform",
+    description:
+      "Full-featured investment platform with multiple deposit & withdrawal options, tiered investment plans, free spin rewards, referral system, in-platform purchases, and a high-end admin panel for user & transaction management.",
+    tags: ["Next.js", "Node.js", "PostgreSQL", "Payment API", "Admin Panel", "Full-Stack"],
+    // TODO: Add live URL when available
+  },
+  {
+    id: "ecommerce-stock-delivery",
+    title: "E-commerce Stock & Delivery Management System",
+    description:
+      "Advanced all-in-one system for online businesses — real-time stock tracking, multi-warehouse inventory control, order lifecycle management, delivery assignment, courier integration, and a live operations dashboard.",
+    tags: ["Next.js", "Node.js", "PostgreSQL", "REST API", "Logistics", "E-commerce"],
+    // TODO: Add live URL when available
+  },
 ];
