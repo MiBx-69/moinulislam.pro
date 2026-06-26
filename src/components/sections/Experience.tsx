@@ -11,25 +11,32 @@ export function Experience() {
   const [openId, setOpenId] = useState<string | null>("universes");
 
   return (
-    <section id="experience" className="section-padding" ref={ref}>
-      <div className="container-wide">
+    <section id="experience" className="section-padding relative overflow-hidden" ref={ref}>
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 40% at 80% 50%, rgba(0,217,255,0.03) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="container-wide relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="text-xs font-mono font-medium tracking-widest uppercase text-[#00D9FF] block mb-3">
-            Career
-          </span>
+          <span className="section-label">Career</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Professional Experience
           </h2>
         </motion.div>
 
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 top-2 bottom-2 w-px bg-[#1E293B] hidden sm:block" />
+          {/* Vertical timeline line */}
+          <div className="absolute left-5 top-3 bottom-3 w-px hidden sm:block" style={{ background: "linear-gradient(to bottom, rgba(0,217,255,0.3), rgba(0,217,255,0.05))" }} />
 
           <div className="flex flex-col gap-3">
             {experiences.map((exp, i) => {
@@ -37,19 +44,22 @@ export function Experience() {
               return (
                 <motion.div
                   key={exp.id}
-                  initial={{ opacity: 0, x: -16 }}
+                  initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.1 + i * 0.09 }}
-                  className="sm:pl-12 relative"
+                  transition={{ duration: 0.5, delay: 0.08 + i * 0.1 }}
+                  className="sm:pl-14 relative"
                 >
                   {/* Timeline dot */}
-                  <div
-                    className={`absolute left-2.5 top-5 w-3 h-3 rounded-full border-2 hidden sm:block -translate-x-1/2 transition-colors duration-300 ${
-                      exp.current
-                        ? "bg-[#00D9FF] border-[#00D9FF] shadow-[0_0_8px_rgba(0,217,255,0.6)]"
-                        : "bg-[#1E293B] border-[#334155]"
-                    }`}
-                  />
+                  <div className="absolute left-5 top-6 hidden sm:flex items-center justify-center -translate-x-1/2">
+                    {exp.current ? (
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D9FF] opacity-40" />
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00D9FF] shadow-[0_0_8px_rgba(0,217,255,0.8)]" />
+                      </span>
+                    ) : (
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#1E293B] border border-[#334155]" />
+                    )}
+                  </div>
 
                   <button
                     onClick={() => setOpenId(isOpen ? null : exp.id)}
@@ -57,30 +67,30 @@ export function Experience() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-2 mb-1">
-                          <span className="font-heading font-semibold text-white text-base">
+                        <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                          <span className="font-heading font-bold text-white text-base leading-snug">
                             {exp.role}
                           </span>
                           {exp.current && (
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[rgba(0,217,255,0.1)] text-[#00D9FF] border border-[rgba(0,217,255,0.2)]">
+                            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[rgba(0,217,255,0.1)] text-[#00D9FF] border border-[rgba(0,217,255,0.25)]">
                               Current
                             </span>
                           )}
                         </div>
-                        <div className="flex flex-wrap items-center gap-3 text-sm text-[#64748B]">
-                          <span className="flex items-center gap-1">
-                            <Briefcase size={12} />
+                        <div className="flex flex-wrap items-center gap-4 text-xs text-[#64748B]">
+                          <span className="flex items-center gap-1.5">
+                            <Briefcase size={11} />
                             {exp.company}
                           </span>
-                          <span className="flex items-center gap-1">
-                            <MapPin size={12} />
+                          <span className="flex items-center gap-1.5">
+                            <MapPin size={11} />
                             {exp.period}
                           </span>
                         </div>
                       </div>
                       <ChevronDown
-                        size={16}
-                        className={`flex-shrink-0 text-[#64748B] transition-transform duration-300 ${
+                        size={15}
+                        className={`flex-shrink-0 text-[#64748B] transition-transform duration-300 mt-0.5 ${
                           isOpen ? "rotate-180" : ""
                         }`}
                       />
@@ -96,7 +106,7 @@ export function Experience() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="mt-4 pt-4 border-t border-[#1E293B]">
+                          <div className="mt-4 pt-4 border-t border-[#1a2640]">
                             <p className="text-[#94A3B8] text-sm leading-relaxed mb-4">
                               {exp.description}
                             </p>

@@ -5,6 +5,15 @@ import { motion, useInView } from "framer-motion";
 import { achievements } from "@/data";
 import { useCountUp } from "@/hooks/useCountUp";
 
+const ACCENT_COLORS = [
+  { text: "#00D9FF", bg: "rgba(0,217,255,0.08)", border: "rgba(0,217,255,0.15)" },
+  { text: "#3B82F6", bg: "rgba(59,130,246,0.08)", border: "rgba(59,130,246,0.15)" },
+  { text: "#00D9FF", bg: "rgba(0,217,255,0.08)", border: "rgba(0,217,255,0.15)" },
+  { text: "#3B82F6", bg: "rgba(59,130,246,0.08)", border: "rgba(59,130,246,0.15)" },
+  { text: "#00D9FF", bg: "rgba(0,217,255,0.08)", border: "rgba(0,217,255,0.15)" },
+  { text: "#3B82F6", bg: "rgba(59,130,246,0.08)", border: "rgba(59,130,246,0.15)" },
+];
+
 function CounterCard({
   item,
   index,
@@ -14,25 +23,49 @@ function CounterCard({
   index: number;
   isInView: boolean;
 }) {
-  const count = useCountUp(item.numericValue, 2000, isInView);
+  const count = useCountUp(item.numericValue, 2200, isInView);
+  const color = ACCENT_COLORS[index % ACCENT_COLORS.length];
 
-  const displayValue =
-    item.numericValue >= 1000
-      ? `${(count / 1000).toFixed(count >= 1000 ? 0 : 1)}K${item.suffix}`
-      : `${count}${item.suffix}`;
+  const formatDisplay = () => {
+    if (item.numericValue >= 1000 && count >= 1000) {
+      return `${Math.floor(count / 1000)}K${item.suffix}`;
+    }
+    return `${count}${item.suffix}`;
+  };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
-      className="card-base p-6 text-center"
+      transition={{ duration: 0.5, delay: 0.1 + index * 0.09 }}
+      className="relative group p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+      style={{
+        background: `linear-gradient(135deg, #111827 0%, #0D1117 100%)`,
+        borderColor: color.border,
+      }}
     >
-      <div className="font-heading text-4xl font-bold accent-text mb-2">
-        {displayValue}
+      {/* Background glow on hover */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ background: `radial-gradient(ellipse at center, ${color.bg} 0%, transparent 70%)` }}
+      />
+
+      {/* Top accent line */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: `linear-gradient(90deg, transparent, ${color.text}40, transparent)` }}
+      />
+
+      <div className="relative z-10 text-center">
+        <div
+          className="font-heading text-5xl font-black mb-3 tabular-nums"
+          style={{ color: color.text }}
+        >
+          {formatDisplay()}
+        </div>
+        <p className="text-white text-sm font-semibold mb-1.5">{item.label}</p>
+        <p className="text-[#64748B] text-xs leading-relaxed">{item.sublabel}</p>
       </div>
-      <p className="text-white text-sm font-semibold mb-1">{item.label}</p>
-      <p className="text-[#64748B] text-xs">{item.sublabel}</p>
     </motion.div>
   );
 }
@@ -42,32 +75,30 @@ export function Achievements() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section
-      id="achievements"
-      className="section-padding relative overflow-hidden"
-      ref={ref}
-    >
+    <section id="achievements" className="section-padding relative overflow-hidden" ref={ref}>
+      {/* Background glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 40% at 50% 50%, rgba(0,217,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(0,217,255,0.04) 0%, transparent 70%)",
         }}
       />
+
       <div className="container-wide relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
+          className="mb-14 text-center"
         >
-          <span className="text-xs font-mono font-medium tracking-widest uppercase text-[#00D9FF] block mb-3">
+          <span className="text-xs font-mono font-semibold tracking-widest uppercase text-[#00D9FF] block mb-3">
             By the Numbers
           </span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Impact & Achievements
           </h2>
-          <p className="text-[#94A3B8] max-w-xl mx-auto">
+          <p className="text-[#94A3B8] max-w-xl mx-auto leading-relaxed">
             Measurable outcomes from years of building systems, running campaigns, and delivering results.
           </p>
         </motion.div>

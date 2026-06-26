@@ -17,16 +17,7 @@ import {
 import { skillGroups } from "@/data";
 
 const ICON_MAP: Record<string, React.ElementType> = {
-  Search,
-  TrendingUp,
-  Cpu,
-  Code2,
-  ShoppingBag,
-  BarChart2,
-  Bot,
-  Zap,
-  Monitor,
-  Layers,
+  Search, TrendingUp, Cpu, Code2, ShoppingBag, BarChart2, Bot, Zap, Monitor, Layers,
 };
 
 export function Skills() {
@@ -34,21 +25,28 @@ export function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="skills" className="section-padding" ref={ref}>
-      <div className="container-wide">
+    <section id="skills" className="section-padding relative overflow-hidden" ref={ref}>
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 40% at 20% 50%, rgba(0,217,255,0.04) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="container-wide relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="text-xs font-mono font-medium tracking-widest uppercase text-[#00D9FF] block mb-3">
-            Toolkit
-          </span>
+          <span className="section-label">Toolkit</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Technical Skills
           </h2>
-          <p className="text-[#94A3B8] max-w-xl">
+          <p className="text-[#94A3B8] max-w-xl leading-relaxed">
             Tools, platforms, and technologies I use to build and deliver results.
           </p>
         </motion.div>
@@ -56,25 +54,39 @@ export function Skills() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {skillGroups.map((group, i) => {
             const Icon = ICON_MAP[group.icon] ?? Code2;
+            const isBlue = i % 2 === 1;
             return (
               <motion.div
                 key={group.category}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-                className="card-base p-5"
+                transition={{ duration: 0.4, delay: 0.08 + i * 0.09 }}
+                className="card-base p-5 group"
               >
-                <div className="flex items-center gap-2.5 mb-4">
-                  <div className="p-2 rounded-lg bg-[rgba(0,217,255,0.08)]">
-                    <Icon size={15} className="text-[#00D9FF]" />
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="p-2.5 rounded-xl transition-transform group-hover:scale-105"
+                    style={{
+                      background: isBlue
+                        ? "rgba(59,130,246,0.1)"
+                        : "rgba(0,217,255,0.1)",
+                    }}
+                  >
+                    <Icon
+                      size={15}
+                      style={{ color: isBlue ? "#3B82F6" : "#00D9FF" }}
+                    />
                   </div>
-                  <h3 className="font-heading font-semibold text-white text-sm">
+                  <h3 className="font-heading font-bold text-white text-sm">
                     {group.category}
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {group.skills.map((skill) => (
-                    <span key={skill} className="tag">
+                    <span
+                      key={skill}
+                      className={isBlue ? "tag tag-blue" : "tag"}
+                    >
                       {skill}
                     </span>
                   ))}

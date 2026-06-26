@@ -33,26 +33,38 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Share2,
 };
 
+const ACCENT_CYCLE = [
+  { icon: "#00D9FF", bg: "rgba(0,217,255,0.08)", border: "rgba(0,217,255,0.14)" },
+  { icon: "#3B82F6", bg: "rgba(59,130,246,0.08)", border: "rgba(59,130,246,0.14)" },
+];
+
 export function Competencies() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="competencies" className="section-padding" ref={ref}>
-      <div className="container-wide">
+    <section id="competencies" className="section-padding relative overflow-hidden" ref={ref}>
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 40% at 80% 30%, rgba(0,217,255,0.04) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="container-wide relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="text-xs font-mono font-medium tracking-widest uppercase text-[#00D9FF] block mb-3">
-            What I Do
-          </span>
+          <span className="section-label">What I Do</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Core Competencies
           </h2>
-          <p className="text-[#94A3B8] max-w-xl">
+          <p className="text-[#94A3B8] max-w-xl leading-relaxed">
             A broad set of skills covering digital growth, technical systems, and business operations.
           </p>
         </motion.div>
@@ -60,18 +72,28 @@ export function Competencies() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {competencies.map((item, i) => {
             const Icon = ICON_MAP[item.icon] ?? Search;
+            const colors = ACCENT_CYCLE[i % 2];
             return (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }}
-                className="card-base flex items-start gap-3 p-4"
+                transition={{ duration: 0.4, delay: 0.08 + i * 0.05 }}
+                className="group flex items-center gap-3.5 p-4 rounded-xl border transition-all duration-250 hover:-translate-y-0.5 cursor-default"
+                style={{
+                  background: "linear-gradient(135deg, #0f1623 0%, #0d1420 100%)",
+                  borderColor: colors.border,
+                }}
               >
-                <div className="mt-0.5 p-2 rounded-lg bg-[rgba(0,217,255,0.08)] flex-shrink-0">
-                  <Icon size={16} className="text-[#00D9FF]" />
+                <div
+                  className="p-2.5 rounded-xl flex-shrink-0 transition-transform group-hover:scale-105"
+                  style={{ background: colors.bg }}
+                >
+                  <Icon size={16} style={{ color: colors.icon }} />
                 </div>
-                <span className="text-sm text-[#94A3B8] leading-snug">{item.label}</span>
+                <span className="text-sm text-[#94A3B8] leading-snug group-hover:text-white transition-colors">
+                  {item.label}
+                </span>
               </motion.div>
             );
           })}

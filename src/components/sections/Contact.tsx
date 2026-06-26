@@ -14,7 +14,7 @@ export function Contact() {
   const copyEmail = async () => {
     await navigator.clipboard.writeText(personal.email);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2200);
   };
 
   const handleChange = (
@@ -23,22 +23,68 @@ export function Contact() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const contactItems = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: personal.email,
+      href: `mailto:${personal.email}`,
+      color: "#00D9FF",
+      bg: "rgba(0,217,255,0.08)",
+      onClick: copyEmail,
+      copyable: true,
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: personal.phone,
+      href: `tel:${personal.phone}`,
+      color: "#00D9FF",
+      bg: "rgba(0,217,255,0.08)",
+    },
+    {
+      icon: Globe,
+      label: "Agency",
+      value: "moinul.mibrand.agency",
+      href: personal.website,
+      color: "#3B82F6",
+      bg: "rgba(59,130,246,0.08)",
+      external: true,
+    },
+    {
+      icon: Link2,
+      label: "LinkedIn",
+      value: "View Profile",
+      href: personal.linkedin,
+      color: "#3B82F6",
+      bg: "rgba(59,130,246,0.08)",
+      external: true,
+    },
+  ];
+
   return (
-    <section id="contact" className="section-padding" ref={ref}>
-      <div className="container-wide">
+    <section id="contact" className="section-padding relative overflow-hidden" ref={ref}>
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 50% 80%, rgba(0,217,255,0.05) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="container-wide relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="text-xs font-mono font-medium tracking-widest uppercase text-[#00D9FF] block mb-3">
-            Get in Touch
-          </span>
+          <span className="section-label">Get in Touch</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Contact Me
           </h2>
-          <p className="text-[#94A3B8] max-w-xl">
+          <p className="text-[#94A3B8] max-w-lg leading-relaxed">
             Have a project in mind, need SEO strategy, or want to automate your operations? I&apos;d love to hear from you.
           </p>
         </motion.div>
@@ -46,84 +92,81 @@ export function Contact() {
         <div className="grid lg:grid-cols-5 gap-10">
           {/* Left: Contact info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-2 flex flex-col gap-4"
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="lg:col-span-2 flex flex-col gap-3"
           >
-            {/* Email copy */}
-            <button
-              onClick={copyEmail}
-              className="card-base flex items-center gap-3 p-4 text-left group"
-            >
-              <div className="p-2 rounded-lg bg-[rgba(0,217,255,0.08)]">
-                <Mail size={15} className="text-[#00D9FF]" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-[#64748B] mb-0.5">Email</p>
-                <p className="text-sm text-white truncate group-hover:text-[#00D9FF] transition-colors">
-                  {personal.email}
-                </p>
-              </div>
-              <span className="text-[#64748B] group-hover:text-[#00D9FF] transition-colors flex-shrink-0">
-                {copied ? <Check size={14} /> : <Copy size={14} />}
-              </span>
-            </button>
+            {contactItems.map((item, i) => {
+              const Icon = item.icon;
+              const inner = (
+                <div className="card-base flex items-center gap-3.5 p-4 group cursor-pointer w-full">
+                  <div
+                    className="p-2.5 rounded-xl flex-shrink-0 transition-transform group-hover:scale-105"
+                    style={{ background: item.bg }}
+                  >
+                    <Icon size={14} style={{ color: item.color }} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[10px] text-[#64748B] mb-0.5 font-mono uppercase tracking-wider">
+                      {item.label}
+                    </p>
+                    <p
+                      className="text-sm text-white truncate transition-colors"
+                      style={{ ["--hover-color" as string]: item.color }}
+                    >
+                      {item.value}
+                    </p>
+                  </div>
+                  {item.copyable && (
+                    <span className="flex-shrink-0 text-[#64748B] group-hover:text-[#00D9FF] transition-colors">
+                      {copied ? <Check size={13} /> : <Copy size={13} />}
+                    </span>
+                  )}
+                </div>
+              );
 
-            {/* Phone */}
-            <a
-              href={`tel:${personal.phone}`}
-              className="card-base flex items-center gap-3 p-4 group"
-            >
-              <div className="p-2 rounded-lg bg-[rgba(0,217,255,0.08)]">
-                <Phone size={15} className="text-[#00D9FF]" />
-              </div>
-              <div>
-                <p className="text-xs text-[#64748B] mb-0.5">Phone</p>
-                <p className="text-sm text-white group-hover:text-[#00D9FF] transition-colors">
-                  {personal.phone}
-                </p>
-              </div>
-            </a>
+              return (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.35, delay: 0.2 + i * 0.07 }}
+                >
+                  {item.onClick ? (
+                    <button onClick={item.onClick} className="w-full text-left">
+                      {inner}
+                    </button>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                    >
+                      {inner}
+                    </a>
+                  )}
+                </motion.div>
+              );
+            })}
 
-            {/* Website */}
-            <a
-              href={personal.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-base flex items-center gap-3 p-4 group"
-            >
-              <div className="p-2 rounded-lg bg-[rgba(0,217,255,0.08)]">
-                <Globe size={15} className="text-[#00D9FF]" />
-              </div>
-              <div>
-                <p className="text-xs text-[#64748B] mb-0.5">Agency</p>
-                <p className="text-sm text-white group-hover:text-[#00D9FF] transition-colors">
-                  moinul.mibrand.agency
-                </p>
-              </div>
-            </a>
+            {copied && (
+              <motion.p
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-[11px] text-[#00D9FF] font-mono px-1"
+              >
+                ✓ Email copied to clipboard
+              </motion.p>
+            )}
 
-            {/* LinkedIn */}
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-base flex items-center gap-3 p-4 group"
+            {/* Availability */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.6 }}
+              className="flex items-center gap-2.5 mt-2 px-1"
             >
-              <div className="p-2 rounded-lg bg-[rgba(59,130,246,0.08)]">
-                <Link2 size={15} className="text-[#3B82F6]" />
-              </div>
-              <div>
-                <p className="text-xs text-[#64748B] mb-0.5">LinkedIn</p>
-                <p className="text-sm text-white group-hover:text-[#3B82F6] transition-colors">
-                  View Profile
-                </p>
-              </div>
-            </a>
-
-            {/* Availability badge */}
-            <div className="flex items-center gap-2 mt-2 px-1">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D9FF] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00D9FF]" />
@@ -131,61 +174,52 @@ export function Contact() {
               <span className="text-xs text-[#64748B]">
                 Available for new projects & collaborations
               </span>
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Right: Contact form (UI only) */}
+          {/* Right: Contact form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.2 }}
             className="lg:col-span-3"
           >
             <form
               onSubmit={(e) => e.preventDefault()}
               className="card-base p-6 flex flex-col gap-4"
             >
+              {/* Top accent */}
+              <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[rgba(0,217,255,0.4)] to-transparent" />
+
               <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-xs text-[#64748B] mb-1.5 font-mono"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    className="w-full bg-[#0B0F19] border border-[#1E293B] rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-[#334155] focus:outline-none focus:border-[rgba(0,217,255,0.4)] transition-colors"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-xs text-[#64748B] mb-1.5 font-mono"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="your@email.com"
-                    className="w-full bg-[#0B0F19] border border-[#1E293B] rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-[#334155] focus:outline-none focus:border-[rgba(0,217,255,0.4)] transition-colors"
-                  />
-                </div>
+                {[
+                  { id: "name", label: "Name", type: "text", placeholder: "Your name" },
+                  { id: "email", label: "Email", type: "email", placeholder: "your@email.com" },
+                ].map((field) => (
+                  <div key={field.id}>
+                    <label
+                      htmlFor={field.id}
+                      className="block text-[10px] text-[#64748B] mb-1.5 font-mono uppercase tracking-widest"
+                    >
+                      {field.label}
+                    </label>
+                    <input
+                      id={field.id}
+                      name={field.id}
+                      type={field.type}
+                      value={form[field.id as keyof typeof form]}
+                      onChange={handleChange}
+                      placeholder={field.placeholder}
+                      className="w-full bg-[#080d16] border border-[#1a2640] rounded-xl px-4 py-2.5 text-sm text-white placeholder-[#2d3f57] focus:outline-none focus:border-[rgba(0,217,255,0.4)] focus:shadow-[0_0_0_3px_rgba(0,217,255,0.06)] transition-all"
+                    />
+                  </div>
+                ))}
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-xs text-[#64748B] mb-1.5 font-mono"
+                  className="block text-[10px] text-[#64748B] mb-1.5 font-mono uppercase tracking-widest"
                 >
                   Message
                 </label>
@@ -196,13 +230,13 @@ export function Contact() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Tell me about your project..."
-                  className="w-full bg-[#0B0F19] border border-[#1E293B] rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-[#334155] focus:outline-none focus:border-[rgba(0,217,255,0.4)] transition-colors resize-none"
+                  className="w-full bg-[#080d16] border border-[#1a2640] rounded-xl px-4 py-2.5 text-sm text-white placeholder-[#2d3f57] focus:outline-none focus:border-[rgba(0,217,255,0.4)] focus:shadow-[0_0_0_3px_rgba(0,217,255,0.06)] transition-all resize-none"
                 />
               </div>
 
-              <div className="flex items-center justify-between gap-4">
-                <p className="text-xs text-[#64748B]">
-                  Or email directly:{" "}
+              <div className="flex items-center justify-between gap-4 pt-1">
+                <p className="text-xs text-[#64748B] hidden sm:block">
+                  Or reach me at{" "}
                   <a
                     href={`mailto:${personal.email}`}
                     className="text-[#00D9FF] hover:underline"
@@ -212,9 +246,9 @@ export function Contact() {
                 </p>
                 <button
                   type="submit"
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-colors shadow-lg shadow-[rgba(0,217,255,0.2)] flex-shrink-0"
+                  className="group flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-sm bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-all duration-200 shadow-lg shadow-[rgba(0,217,255,0.2)] hover:shadow-[rgba(0,217,255,0.35)] hover:-translate-y-0.5 flex-shrink-0 ml-auto"
                 >
-                  <Send size={14} />
+                  <Send size={13} className="group-hover:translate-x-0.5 transition-transform" />
                   Send Message
                 </button>
               </div>

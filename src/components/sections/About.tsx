@@ -19,41 +19,51 @@ export function About() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" className="section-padding" ref={ref}>
-      <div className="container-wide">
+    <section id="about" className="section-padding relative overflow-hidden" ref={ref}>
+      {/* Section divider top */}
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+
+      {/* Ambient glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 40% at 20% 60%, rgba(59,130,246,0.04) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="container-wide relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="text-xs font-mono font-medium tracking-widest uppercase text-[#00D9FF] block mb-3">
-            About Me
-          </span>
+          <span className="section-label">About Me</span>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
             Professional Summary
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-10">
+        <div className="grid lg:grid-cols-5 gap-12">
           {/* Left: Summary */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-3"
           >
-            <p className="text-[#94A3B8] text-base md:text-lg leading-relaxed mb-6">
+            <p className="text-[#94A3B8] text-base md:text-lg leading-relaxed mb-7">
               {personal.summary}
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-8 text-sm text-[#94A3B8]">
-              <span className="flex items-center gap-1.5">
-                <MapPin size={14} className="text-[#00D9FF]" />
+            <div className="flex flex-wrap gap-4 mb-9 text-sm">
+              <span className="flex items-center gap-1.5 text-[#94A3B8]">
+                <MapPin size={13} className="text-[#00D9FF]" />
                 {personal.location}
               </span>
-              <span className="flex items-center gap-1.5">
-                <Globe size={14} className="text-[#00D9FF]" />
+              <span className="flex items-center gap-1.5 text-[#94A3B8]">
+                <Globe size={13} className="text-[#00D9FF]" />
                 <a
                   href={personal.website}
                   target="_blank"
@@ -65,20 +75,20 @@ export function About() {
               </span>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-2.5">
+            <div className="grid sm:grid-cols-2 gap-3">
               {HIGHLIGHTS.map((item, i) => (
                 <motion.div
                   key={item}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.07 }}
-                  className="flex items-start gap-2.5"
+                  className="flex items-start gap-2.5 group"
                 >
                   <CheckCircle
                     size={14}
-                    className="text-[#00D9FF] mt-0.5 flex-shrink-0"
+                    className="text-[#00D9FF] mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform"
                   />
-                  <span className="text-sm text-[#94A3B8]">{item}</span>
+                  <span className="text-sm text-[#94A3B8] leading-snug">{item}</span>
                 </motion.div>
               ))}
             </div>
@@ -86,29 +96,59 @@ export function About() {
 
           {/* Right: Quick info cards */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 flex flex-col gap-4"
+            className="lg:col-span-2 flex flex-col gap-3"
           >
             {[
-              { label: "Current Role", value: "Head of IT & Online Executive", sub: "Universes E-commerce" },
-              { label: "Agency", value: "MiBrand Agency", sub: "Founder & SEO Specialist" },
-              { label: "Freelancing", value: "2021 – Present", sub: "SEO & Digital Marketing" },
-              { label: "Expertise", value: "SEO + AI + Automation", sub: "E-commerce & Systems" },
+              {
+                label: "Current Role",
+                value: "Head of IT & Online Executive",
+                sub: "Universes E-commerce",
+                color: "#00D9FF",
+              },
+              {
+                label: "Agency",
+                value: "MiBrand Agency",
+                sub: "Founder & SEO Specialist",
+                color: "#3B82F6",
+              },
+              {
+                label: "Freelancing",
+                value: "2021 – Present",
+                sub: "SEO & Digital Marketing",
+                color: "#00D9FF",
+              },
+              {
+                label: "Expertise",
+                value: "SEO + AI + Automation",
+                sub: "E-commerce & Systems",
+                color: "#3B82F6",
+              },
             ].map((card, i) => (
               <motion.div
                 key={card.label}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
-                className="p-4 rounded-xl bg-[#111827] border border-[#1E293B] hover:border-[rgba(0,217,255,0.25)] transition-colors"
+                transition={{ duration: 0.4, delay: 0.3 + i * 0.09 }}
+                className="card-base p-5 group cursor-default"
               >
-                <p className="text-xs font-mono text-[#64748B] uppercase tracking-wider mb-1">
-                  {card.label}
-                </p>
-                <p className="text-white font-semibold text-sm">{card.value}</p>
-                <p className="text-[#64748B] text-xs mt-0.5">{card.sub}</p>
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-[10px] font-mono text-[#64748B] uppercase tracking-widest mb-1.5">
+                      {card.label}
+                    </p>
+                    <p className="text-white font-semibold text-sm leading-snug mb-0.5">
+                      {card.value}
+                    </p>
+                    <p className="text-[#64748B] text-xs">{card.sub}</p>
+                  </div>
+                  <div
+                    className="w-2 h-2 rounded-full mt-1 flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity"
+                    style={{ background: card.color }}
+                  />
+                </div>
               </motion.div>
             ))}
           </motion.div>

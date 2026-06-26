@@ -19,7 +19,7 @@ export function Navbar() {
   const activeSection = useActiveSection();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -29,19 +29,22 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0B0F19]/90 backdrop-blur-md border-b border-[#1E293B]"
+            ? "bg-[rgba(11,15,25,0.92)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.06)] shadow-[0_1px_0_rgba(0,217,255,0.06)]"
             : "bg-transparent"
         }`}
       >
         <div className="container-wide h-16 flex items-center justify-between">
+          {/* Logo */}
           <a
             href="#hero"
-            className="font-heading font-bold text-lg text-white tracking-tight hover:text-[#00D9FF] transition-colors"
+            className="font-heading font-bold text-xl text-white tracking-tight hover:text-[#00D9FF] transition-colors group"
           >
-            Moinul<span className="text-[#00D9FF]">.</span>
+            Moinul
+            <span className="text-[#00D9FF] group-hover:text-white transition-colors">.</span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-0.5">
             {NAV_LINKS.map((link) => {
               const sectionId = link.href.slice(1);
               const isActive = activeSection === sectionId;
@@ -49,10 +52,10 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-1.5 text-sm rounded-md transition-all duration-200 ${
+                  className={`px-3.5 py-1.5 text-sm rounded-lg transition-all duration-200 font-medium ${
                     isActive
                       ? "text-[#00D9FF] bg-[rgba(0,217,255,0.08)]"
-                      : "text-[#94A3B8] hover:text-white"
+                      : "text-[#94A3B8] hover:text-white hover:bg-[rgba(255,255,255,0.04)]"
                   }`}
                 >
                   {link.label}
@@ -61,12 +64,13 @@ export function Navbar() {
             })}
             <a
               href="#contact"
-              className="ml-3 px-4 py-2 text-sm font-semibold rounded-lg bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-colors"
+              className="ml-3 px-5 py-2 text-sm font-bold rounded-xl bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-all duration-200 shadow-md shadow-[rgba(0,217,255,0.2)] hover:shadow-[rgba(0,217,255,0.35)] hover:-translate-y-0.5"
             >
               Hire Me
             </a>
           </nav>
 
+          {/* Mobile toggle */}
           <button
             className="md:hidden p-2 text-[#94A3B8] hover:text-white transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -77,15 +81,16 @@ export function Navbar() {
         </div>
       </header>
 
+      {/* Mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-[#0B0F19]/97 backdrop-blur-md flex flex-col pt-20 px-6">
+        <div className="fixed inset-0 z-40 bg-[rgba(11,15,25,0.98)] backdrop-blur-xl flex flex-col pt-20 px-6">
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="py-4 text-xl font-medium text-white border-b border-[#1E293B] hover:text-[#00D9FF] transition-colors"
+                className="py-4 text-xl font-semibold text-[#94A3B8] border-b border-[#1a2640] hover:text-[#00D9FF] transition-colors"
               >
                 {link.label}
               </a>
@@ -93,7 +98,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-6 py-3 text-center font-semibold bg-[#00D9FF] text-[#0B0F19] rounded-lg hover:bg-[#00c4e8] transition-colors"
+              className="mt-6 py-3.5 text-center font-bold bg-[#00D9FF] text-[#0B0F19] rounded-xl hover:bg-[#00c4e8] transition-colors shadow-lg shadow-[rgba(0,217,255,0.2)]"
             >
               Hire Me
             </a>
