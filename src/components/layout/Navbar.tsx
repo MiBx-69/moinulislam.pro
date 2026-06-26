@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -19,32 +19,29 @@ export function Navbar() {
   const activeSection = useActiveSection();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = () => setMobileOpen(false);
-
   return (
     <>
       <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]"
+            ? "bg-[#0B0F19]/90 backdrop-blur-md border-b border-[#1E293B]"
             : "bg-transparent"
-        )}
+        }`}
       >
-        <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div className="container-wide h-16 flex items-center justify-between">
           <a
             href="#hero"
-            className="font-bold text-[var(--text-primary)] text-lg tracking-tight hover:text-[var(--accent)] transition-colors"
+            className="font-heading font-bold text-lg text-white tracking-tight hover:text-[#00D9FF] transition-colors"
           >
-            Moinul<span className="text-[var(--accent)]">.</span>
+            Moinul<span className="text-[#00D9FF]">.</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map((link) => {
               const sectionId = link.href.slice(1);
               const isActive = activeSection === sectionId;
@@ -52,12 +49,11 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={cn(
-                    "px-3 py-1.5 text-sm rounded-md transition-colors",
+                  className={`px-3 py-1.5 text-sm rounded-md transition-all duration-200 ${
                     isActive
-                      ? "text-[var(--accent)] bg-[var(--accent-muted)]"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                  )}
+                      ? "text-[#00D9FF] bg-[rgba(0,217,255,0.08)]"
+                      : "text-[#94A3B8] hover:text-white"
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -65,41 +61,41 @@ export function Navbar() {
             })}
             <a
               href="#contact"
-              className="ml-2 px-4 py-1.5 text-sm font-medium bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors"
+              className="ml-3 px-4 py-2 text-sm font-semibold rounded-lg bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-colors"
             >
-              Let&apos;s Talk
+              Hire Me
             </a>
-          </div>
+          </nav>
 
           <button
-            className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            className="md:hidden p-2 text-[#94A3B8] hover:text-white transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
-        </nav>
+        </div>
       </header>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-30 bg-[var(--background)]/95 backdrop-blur-md flex flex-col pt-20 px-6">
-          <nav className="flex flex-col gap-2">
+        <div className="fixed inset-0 z-40 bg-[#0B0F19]/97 backdrop-blur-md flex flex-col pt-20 px-6">
+          <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={handleNavClick}
-                className="py-3 text-xl font-medium text-[var(--text-primary)] border-b border-[var(--border)] hover:text-[var(--accent)] transition-colors"
+                onClick={() => setMobileOpen(false)}
+                className="py-4 text-xl font-medium text-white border-b border-[#1E293B] hover:text-[#00D9FF] transition-colors"
               >
                 {link.label}
               </a>
             ))}
             <a
               href="#contact"
-              onClick={handleNavClick}
-              className="mt-4 px-6 py-3 text-center font-medium bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors"
+              onClick={() => setMobileOpen(false)}
+              className="mt-6 py-3 text-center font-semibold bg-[#00D9FF] text-[#0B0F19] rounded-lg hover:bg-[#00c4e8] transition-colors"
             >
-              Let&apos;s Talk
+              Hire Me
             </a>
           </nav>
         </div>

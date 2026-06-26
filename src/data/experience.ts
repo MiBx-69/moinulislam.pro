@@ -8,12 +8,13 @@ export const experiences: Experience[] = [
     period: "Sep 2025 – Present",
     current: true,
     description:
-      "Leading IT infrastructure and digital operations for a premium e-commerce brand. Designing high-converting Shopify stores, managing multi-channel ad campaigns, and building automation tools that scale business operations.",
+      "Leading IT infrastructure and digital operations for a premium e-commerce brand, driving revenue growth through high-converting Shopify stores, multi-channel advertising, and automation.",
     highlights: [
       "Designed and developed high-converting Shopify stores with SEO-first architecture",
       "Generated BDT 10+ lakh monthly revenue with under BDT 1 lakh ad spend",
       "Managed multi-channel advertising campaigns across Meta, Google, and TikTok",
-      "Built automation tools including MiBx POS and messaging APIs",
+      "Built automation tools including MiBx POS and messaging APIs to streamline operations",
+      "Led social media and online sales teams to improve performance and scalability",
       "Implemented CRM systems for customer retention and lifecycle engagement",
       "Ensured data security, system integrity, and compliance across all digital assets",
     ],
@@ -25,10 +26,10 @@ export const experiences: Experience[] = [
     period: "2025 – Present",
     current: true,
     description:
-      "Leading technical development and team operations at MiBx. Specializing in Linux systems, AI integration, cybersecurity, and building automation systems at scale.",
+      "Technical lead and system architect at MiBx Team, specializing in AI integration, automation systems, and Linux infrastructure.",
     highlights: [
       "Developed automation bots (Telegram, WhatsApp) with scalable architecture",
-      "Built MiBx FastLane — a QR-based restaurant automation system",
+      "Built MiBx FastLane, a QR-based restaurant automation system",
       "Specialized in Linux systems, AI integration, and cybersecurity practices",
       "Worked extensively with Python, databases, APIs, and AI tools",
     ],
@@ -40,7 +41,7 @@ export const experiences: Experience[] = [
     period: "Jun 2025 – Aug 2025",
     current: false,
     description:
-      "Managed district-wide marketing operations and regional teams for a travel agency, driving customer acquisition and sales through data-driven campaigns.",
+      "Managed district-wide marketing operations and regional teams for a travel agency, driving customer acquisition and sales growth through targeted campaigns.",
     highlights: [
       "Executed district-wide marketing campaigns and lead generation strategies",
       "Managed regional marketing teams and day-to-day operations",
@@ -55,12 +56,13 @@ export const experiences: Experience[] = [
     period: "2023 – Present",
     current: true,
     description:
-      "Founded and scaled a digital marketing agency serving international clients. Delivering AI-driven SEO strategies, automation systems, and measurable growth for businesses across 5+ markets.",
+      "Founded and scaled a digital marketing agency serving international clients, delivering AI-driven SEO and automation solutions across 5+ global markets.",
     highlights: [
-      "Founded and scaled agency serving international clients across 5+ markets",
+      "Founded and scaled digital marketing agency serving international clients",
       "Closed 20+ SEO retainers within the first year of operation",
       "Delivered AI-driven SEO strategies and local ranking campaigns",
-      "Reduced client manual workload by 40% through automation systems",
+      "Reduced manual workload by 40% through custom automation systems",
+      "Expanded operations to 5+ international markets",
     ],
   },
   {
@@ -70,7 +72,7 @@ export const experiences: Experience[] = [
     period: "2021 – Present",
     current: true,
     description:
-      "Delivering full-service digital marketing and technical SEO for clients worldwide. Managed advertising budgets up to $10,000/month with consistent results across e-commerce, content, and paid advertising.",
+      "Independent digital marketing and SEO consultant serving local and international clients with measurable results across e-commerce, content, and paid advertising.",
     highlights: [
       "Completed 100+ client projects with 85%+ retention rate",
       "Ranked multiple businesses on Google's first page organically",

@@ -1,92 +1,72 @@
-import { ExternalLink, GitBranch } from "lucide-react";
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import { projects } from "@/data";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Badge } from "@/components/ui/Badge";
 
 export function Projects() {
-  const featured = projects.filter((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="projects" className="section-padding">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <SectionHeader
-          label="Projects"
-          title="Things I've Built"
-          description="A selection of automation systems, platforms, and tools I've designed and shipped."
-        />
+    <section id="projects" className="section-padding" ref={ref}>
+      <div className="container-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-12"
+        >
+          <span className="text-xs font-mono font-medium tracking-widest uppercase text-[#00D9FF] block mb-3">
+            Portfolio
+          </span>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+            Key Projects
+          </h2>
+          <p className="text-[#94A3B8] max-w-xl">
+            A selection of automation systems, platforms, and tools I&apos;ve designed and shipped.
+          </p>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-4 mb-4">
-          {featured.map((project, i) => (
-            <FadeIn key={project.id} delay={i * 100} direction="up">
-              <div className="group relative p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/40 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="font-semibold text-[var(--text-primary)] mb-1 group-hover:text-[var(--accent)] transition-colors">
-                      {project.title}
-                    </h3>
-                    <Badge variant="success">{project.status}</Badge>
-                  </div>
-                  <div className="flex items-center gap-2 ml-4">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-                        aria-label="GitHub"
-                      >
-                        <GitBranch size={16} />
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors"
-                        aria-label="Live link"
-                      >
-                        <ExternalLink size={16} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4 flex-1">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tech.map((t) => (
-                    <Badge key={t}>{t}</Badge>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {rest.map((project, i) => (
-            <FadeIn key={project.id} delay={400 + i * 80} direction="up">
-              <div className="group p-5 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/40 transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-                <h3 className="font-medium text-sm text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {projects.map((project, i) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.45, delay: 0.05 + i * 0.07 }}
+              className="card-base p-5 flex flex-col group"
+            >
+              <div className="flex items-start justify-between gap-2 mb-3">
+                <h3 className="font-heading font-semibold text-white text-sm leading-snug group-hover:text-[#00D9FF] transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-3 flex-1 line-clamp-3">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-1">
-                  {project.tech.slice(0, 3).map((t) => (
-                    <Badge key={t} className="text-[10px] px-2 py-0.5">
-                      {t}
-                    </Badge>
-                  ))}
-                </div>
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 text-[#64748B] hover:text-[#00D9FF] transition-colors"
+                    aria-label="Live link"
+                  >
+                    <ExternalLink size={14} />
+                  </a>
+                )}
               </div>
-            </FadeIn>
+
+              <p className="text-sm text-[#94A3B8] leading-relaxed mb-4 flex-1">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-1.5">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

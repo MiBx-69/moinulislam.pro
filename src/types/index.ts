@@ -1,12 +1,21 @@
+export interface Experience {
+  id: string;
+  role: string;
+  company: string;
+  companyUrl?: string;
+  period: string;
+  current: boolean;
+  description: string;
+  highlights: string[];
+}
+
 export interface Project {
   id: string;
   title: string;
   description: string;
-  tech: string[];
+  tags: string[];
   liveUrl?: string;
   githubUrl?: string;
-  featured: boolean;
-  status: "live" | "in-progress" | "archived";
 }
 
 export interface SkillGroup {
@@ -15,30 +24,34 @@ export interface SkillGroup {
   skills: string[];
 }
 
-export interface Experience {
-  id: string;
-  role: string;
-  company: string;
-  period: string;
-  current: boolean;
-  description: string;
-  highlights: string[];
+export interface Competency {
+  label: string;
+  icon: string;
 }
 
-export interface Social {
+export interface Achievement {
+  value: string;
+  numericValue: number;
+  suffix: string;
   label: string;
-  url: string;
-  icon: string;
+  sublabel: string;
+}
+
+export interface Education {
+  degree: string;
+  institution: string;
+  type: "degree" | "certification";
 }
 
 export interface PersonalInfo {
   name: string;
-  title: string;
+  roles: string[];
   tagline: string;
-  bio: string;
+  summary: string;
   location: string;
   available: boolean;
   email: string;
   phone: string;
-  socials: Social[];
+  website: string;
+  linkedin: string;
 }

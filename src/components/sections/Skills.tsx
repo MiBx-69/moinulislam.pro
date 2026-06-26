@@ -1,16 +1,20 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   Search,
   TrendingUp,
   Cpu,
   Code2,
   ShoppingBag,
-  Server,
+  BarChart2,
   Bot,
-  Users,
+  Zap,
+  Monitor,
+  Layers,
 } from "lucide-react";
 import { skillGroups } from "@/data";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Search,
@@ -18,49 +22,64 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Cpu,
   Code2,
   ShoppingBag,
-  Server,
+  BarChart2,
   Bot,
-  Users,
+  Zap,
+  Monitor,
+  Layers,
 };
 
 export function Skills() {
-  return (
-    <section id="skills" className="section-padding">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <SectionHeader
-          label="Skills"
-          title="Tools & Expertise"
-          description="A full-stack of capabilities spanning development, marketing, automation, and infrastructure."
-        />
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  return (
+    <section id="skills" className="section-padding" ref={ref}>
+      <div className="container-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-12"
+        >
+          <span className="text-xs font-mono font-medium tracking-widest uppercase text-[#00D9FF] block mb-3">
+            Toolkit
+          </span>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+            Technical Skills
+          </h2>
+          <p className="text-[#94A3B8] max-w-xl">
+            Tools, platforms, and technologies I use to build and deliver results.
+          </p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {skillGroups.map((group, i) => {
-            const Icon = ICON_MAP[group.icon];
+            const Icon = ICON_MAP[group.icon] ?? Code2;
             return (
-              <FadeIn key={group.category} delay={i * 60} direction="up">
-                <div className="p-5 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/30 transition-colors h-full">
-                  <div className="flex items-center gap-2.5 mb-4">
-                    {Icon && (
-                      <div className="p-1.5 rounded-md bg-[var(--accent-muted)]">
-                        <Icon size={14} className="text-[var(--accent)]" />
-                      </div>
-                    )}
-                    <h3 className="font-medium text-sm text-[var(--text-primary)]">
-                      {group.category}
-                    </h3>
+              <motion.div
+                key={group.category}
+                initial={{ opacity: 0, y: 16 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
+                className="card-base p-5"
+              >
+                <div className="flex items-center gap-2.5 mb-4">
+                  <div className="p-2 rounded-lg bg-[rgba(0,217,255,0.08)]">
+                    <Icon size={15} className="text-[#00D9FF]" />
                   </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {group.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-2 py-0.5 text-[11px] rounded bg-[var(--surface-elevated)] text-[var(--text-secondary)] font-mono border border-[var(--border)] hover:text-[var(--accent)] hover:border-[var(--accent)]/30 transition-colors cursor-default"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                  <h3 className="font-heading font-semibold text-white text-sm">
+                    {group.category}
+                  </h3>
                 </div>
-              </FadeIn>
+                <div className="flex flex-wrap gap-1.5">
+                  {group.skills.map((skill) => (
+                    <span key={skill} className="tag">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
             );
           })}
         </div>
