@@ -98,23 +98,25 @@ export function Hero() {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#1F1B17] leading-[1.08] tracking-tight mb-5"
+              className="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-[#1F1B17] leading-[1.06] tracking-[-0.02em] mb-6"
             >
-              {personal.name}
+              Moinul Islam{" "}
+              <span className="italic accent-text font-medium inline-block pr-2 pb-1">Bappi</span>
             </motion.h1>
 
             {/* Rotating role */}
-            <motion.div variants={itemVariants} className="h-11 flex items-center justify-center lg:justify-start mb-7">
-              <span className="text-[#8C8278] text-base sm:text-lg mr-2.5 font-medium">I am a</span>
-              <div className="overflow-hidden h-11 flex items-center">
+            <motion.div variants={itemVariants} className="flex items-center justify-center lg:justify-start gap-3 mb-8">
+              <span className="h-px w-8 bg-[#177D63]/50 hidden lg:block" />
+              <span className="text-[#8C8278] text-xs uppercase tracking-[0.2em] font-mono">I am a</span>
+              <div className="overflow-hidden h-9 flex items-center">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roleIndex}
-                    initial={{ opacity: 0, y: 22 }}
+                    initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -22 }}
+                    exit={{ opacity: 0, y: -18 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="font-heading font-bold text-base sm:text-lg accent-text whitespace-nowrap"
+                    className="font-display italic font-semibold text-xl sm:text-2xl text-[#0E5540] whitespace-nowrap"
                   >
                     {personal.roles[roleIndex]}
                   </motion.span>
@@ -153,7 +155,7 @@ export function Hero() {
               <a
                 href={personal.cvUrl}
                 download
-                className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-semibold text-sm text-[#1F1B17] border border-[#E6E0D5] bg-[#FFFFFF] hover:border-[rgba(23,125,99,0.4)] hover:bg-[#111c2e] transition-all duration-200"
+                className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-semibold text-sm text-[#1F1B17] border border-[#E6E0D5] bg-[#FFFFFF] hover:border-[rgba(23,125,99,0.4)] hover:bg-[#FBF9F4] transition-all duration-200"
               >
                 <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-[rgba(23,125,99,0.1)] group-hover:bg-[rgba(23,125,99,0.18)] transition-colors">
                   <Download size={14} className="text-[#177D63] group-hover:translate-y-0.5 transition-transform" />
@@ -203,13 +205,13 @@ export function Hero() {
               />
 
               {/* Offset accent frame behind (depth) */}
-              <div className="absolute inset-0 translate-x-4 translate-y-5 rounded-t-[11rem] rounded-b-[1.75rem] border-2 border-[rgba(23,125,99,0.4)] hidden sm:block" />
+              <div className="absolute inset-0 translate-x-4 translate-y-5 rounded-tl-[5.5rem] rounded-br-[5.5rem] rounded-tr-[1.4rem] rounded-bl-[1.4rem] border-2 border-[rgba(23,125,99,0.4)] hidden sm:block" />
 
               {/* Amber dotted frame accent */}
-              <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-t-[11rem] rounded-b-[1.75rem] border-2 border-dashed border-[rgba(191,130,48,0.35)] hidden lg:block" />
+              <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-tl-[5.5rem] rounded-br-[5.5rem] rounded-tr-[1.4rem] rounded-bl-[1.4rem] border-2 border-dashed border-[rgba(191,130,48,0.35)] hidden lg:block" />
 
               {/* Portrait photo — arch frame */}
-              <div className="relative aspect-[4/5] w-full rounded-t-[11rem] rounded-b-[1.75rem] overflow-hidden bg-white border border-[#E6E0D5] shadow-[0_18px_50px_rgba(31,27,23,0.16),0_4px_14px_rgba(31,27,23,0.08)]">
+              <div className="relative aspect-[4/5] w-full rounded-tl-[5.5rem] rounded-br-[5.5rem] rounded-tr-[1.4rem] rounded-bl-[1.4rem] overflow-hidden bg-white border border-[#E6E0D5] shadow-[0_18px_50px_rgba(31,27,23,0.16),0_4px_14px_rgba(31,27,23,0.08)]">
                 <Image
                   src="/moinul.png"
                   alt={personal.name}

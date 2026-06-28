@@ -40,7 +40,7 @@ export function About() {
           className="mb-12"
         >
           <span className="section-label">About Me</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1F1B17] mb-4">
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#1F1B17] tracking-[-0.01em] mb-4">
             Professional Summary
           </h2>
         </motion.div>
