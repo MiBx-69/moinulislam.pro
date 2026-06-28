@@ -75,18 +75,18 @@ export const projects: Project[] = [
   },
   {
     id: "investment-platform",
-    title: "Investment Platform",
+    title: "Complete Investment Platform",
     description:
-      "Full-featured investment platform with multiple deposit & withdrawal options, tiered investment plans, free spin rewards, referral system, in-platform purchases, and a high-end admin panel for user & transaction management.",
-    tags: ["Next.js", "Node.js", "PostgreSQL", "Payment API", "Admin Panel", "Full-Stack"],
+      "Production-ready investment platform built end-to-end with AI-assisted and self-written code. Full backend + frontend, hardened security, separate user panel and high-end admin panel — deposits, withdrawals, tiered investment plans, free spin rewards, referral system, and in-platform purchases.",
+    tags: ["Next.js", "Node.js", "PostgreSQL", "Security", "Admin Panel", "Claude Code", "Production"],
     // TODO: Add live URL when available
   },
   {
     id: "ecommerce-stock-delivery",
-    title: "E-commerce Stock & Delivery Management System",
+    title: "AI-Built Stock Management System",
     description:
-      "Advanced all-in-one system for online businesses — real-time stock tracking, multi-warehouse inventory control, order lifecycle management, delivery assignment, courier integration, and a live operations dashboard.",
-    tags: ["Next.js", "Node.js", "PostgreSQL", "REST API", "Logistics", "E-commerce"],
+      "Advanced stock & delivery management system for online businesses, engineered with AI coding and self-programming. Real-time stock tracking, multi-warehouse inventory control, order lifecycle management, delivery assignment, courier integration, and a live operations dashboard.",
+    tags: ["Next.js", "Node.js", "PostgreSQL", "AI Coding", "Logistics", "E-commerce"],
     // TODO: Add live URL when available
   },
 ];
