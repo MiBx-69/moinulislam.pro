@@ -71,16 +71,17 @@ export function Hero() {
         }}
       />
 
-      <div className="container-wide relative z-10 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container-wide relative z-10 py-12 sm:py-16 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={mounted ? "visible" : "hidden"}
+            className="order-2 lg:order-1 text-center lg:text-left"
           >
             {/* Available badge */}
-            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-8">
+            <motion.div variants={itemVariants} className="flex items-center justify-center lg:justify-start gap-3 mb-8 flex-wrap">
               <span className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold border border-[rgba(0,217,255,0.3)] bg-[rgba(0,217,255,0.07)] text-[#00D9FF]">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D9FF] opacity-75" />
@@ -97,15 +98,15 @@ export function Hero() {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-5"
+              className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-5"
             >
               {personal.name}
             </motion.h1>
 
             {/* Rotating role */}
-            <motion.div variants={itemVariants} className="h-12 flex items-center mb-7">
-              <span className="text-[#64748B] text-xl mr-2.5 font-medium">I am a</span>
-              <div className="overflow-hidden h-12 flex items-center">
+            <motion.div variants={itemVariants} className="h-11 flex items-center justify-center lg:justify-start mb-7">
+              <span className="text-[#64748B] text-base sm:text-lg mr-2.5 font-medium">I am a</span>
+              <div className="overflow-hidden h-11 flex items-center">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roleIndex}
@@ -113,7 +114,7 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -22 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="font-heading font-bold text-xl accent-text whitespace-nowrap"
+                    className="font-heading font-bold text-base sm:text-lg accent-text whitespace-nowrap"
                   >
                     {personal.roles[roleIndex]}
                   </motion.span>
@@ -124,13 +125,13 @@ export function Hero() {
             {/* Tagline */}
             <motion.p
               variants={itemVariants}
-              className="text-[#94A3B8] text-base md:text-lg leading-relaxed max-w-xl mb-9"
+              className="text-[#94A3B8] text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-9"
             >
               {personal.tagline}
             </motion.p>
 
             {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mb-6">
+            <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-3 mb-6">
               <a
                 href="#contact"
                 className="group flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-all duration-200 shadow-lg shadow-[rgba(0,217,255,0.25)] hover:shadow-[rgba(0,217,255,0.4)] hover:-translate-y-0.5"
@@ -163,7 +164,7 @@ export function Hero() {
             </motion.div>
 
             {/* Social links */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-4">
               {[
                 { icon: Link2, label: "LinkedIn", href: personal.linkedin },
                 { icon: Mail, label: "Email", href: `mailto:${personal.email}` },
@@ -189,7 +190,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.85, y: 20 }}
             animate={mounted ? { opacity: 1, scale: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="hidden lg:flex justify-center"
+            className="flex justify-center order-1 lg:order-2"
           >
             <div className="relative">
               {/* Outer glow ring */}
@@ -214,13 +215,13 @@ export function Hero() {
               />
 
               {/* Avatar with real photo */}
-              <div className="relative w-80 h-80 rounded-full overflow-hidden border-2 border-[rgba(0,217,255,0.35)] shadow-[0_0_60px_rgba(0,217,255,0.18),0_0_120px_rgba(0,217,255,0.06)]">
+              <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-[rgba(0,217,255,0.35)] shadow-[0_0_60px_rgba(0,217,255,0.18),0_0_120px_rgba(0,217,255,0.06)]">
                 <Image
                   src="/moinul.png"
                   alt={personal.name}
                   fill
                   priority
-                  sizes="320px"
+                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 288px, 320px"
                   className="object-cover object-[center_22%] scale-[1.35]"
                 />
                 {/* Subtle gradient overlay to blend with theme */}
@@ -237,7 +238,7 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-5 -left-8 flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-[#111827] border border-[#1E293B] shadow-xl shadow-black/40"
+                className="absolute -bottom-4 -left-4 lg:-bottom-5 lg:-left-8 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-[#111827] border border-[#1E293B] shadow-xl shadow-black/40"
               >
                 <div className="w-8 h-8 rounded-lg bg-[rgba(0,217,255,0.1)] flex items-center justify-center">
                   <span className="text-[#00D9FF] text-sm font-bold">✓</span>
@@ -252,7 +253,7 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                className="absolute -top-5 -right-8 flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-[#111827] border border-[#1E293B] shadow-xl shadow-black/40"
+                className="absolute -top-4 -right-4 lg:-top-5 lg:-right-8 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-[#111827] border border-[#1E293B] shadow-xl shadow-black/40"
               >
                 <div className="w-8 h-8 rounded-lg bg-[rgba(59,130,246,0.1)] flex items-center justify-center">
                   <span className="text-[#3B82F6] text-sm font-bold">★</span>
@@ -267,7 +268,7 @@ export function Hero() {
               <motion.div
                 animate={{ x: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute top-1/2 -right-14 -translate-y-1/2 flex items-center gap-2 px-3 py-2 rounded-xl bg-[#111827] border border-[#1E293B] shadow-lg shadow-black/40"
+                className="absolute top-1/2 -right-14 -translate-y-1/2 hidden lg:flex items-center gap-2 px-3 py-2 rounded-xl bg-[#111827] border border-[#1E293B] shadow-lg shadow-black/40"
               >
                 <span className="text-[#00D9FF] text-[10px] font-mono font-bold tracking-wider">MiBrand</span>
               </motion.div>
@@ -280,7 +281,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={mounted ? { opacity: 1 } : {}}
           transition={{ delay: 1.8, duration: 0.6 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2"
         >
           <span className="text-[10px] text-[#334155] font-mono tracking-widest uppercase">Scroll</span>
           <motion.div
