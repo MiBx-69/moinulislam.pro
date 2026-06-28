@@ -55,12 +55,14 @@ export const metadata: Metadata = {
     description:
       "Building AI-driven systems, automation pipelines, and e-commerce growth strategies that generate real business results.",
     siteName: "Moinul Islam Bappi",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Moinul Islam — Portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Moinul Islam Bappi — IT Executive & Digital Marketing Strategist",
     description:
       "Building AI-driven systems, automation pipelines, and e-commerce growth strategies.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

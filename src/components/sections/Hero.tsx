@@ -116,7 +116,7 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -18 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="font-display italic font-semibold text-xl sm:text-2xl text-[#0E5540] whitespace-nowrap"
+                    className="font-display italic font-bold text-xl sm:text-2xl text-[#0B4A38] whitespace-nowrap"
                   >
                     {personal.roles[roleIndex]}
                   </motion.span>
@@ -194,58 +194,60 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex justify-center order-1 lg:order-2"
           >
-            <div className="relative w-64 sm:w-72 lg:w-[20rem]">
-              {/* Soft ambient glow */}
+            <div className="relative w-[18rem] sm:w-[21rem] lg:w-[25rem] aspect-[5/6] mx-auto">
+              {/* Painterly brush-stroke backdrop */}
+              <svg
+                className="absolute inset-0 w-full h-full scale-[1.18] -translate-y-3"
+                viewBox="0 0 600 700"
+                preserveAspectRatio="xMidYMid meet"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="brushEmerald" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#1F8A6E" />
+                    <stop offset="55%" stopColor="#177D63" />
+                    <stop offset="100%" stopColor="#0E5540" />
+                  </linearGradient>
+                  <filter id="brushRough" x="-20%" y="-20%" width="140%" height="140%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="3" seed="7" result="n" />
+                    <feDisplacementMap in="SourceGraphic" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                </defs>
+                <g filter="url(#brushRough)" transform="rotate(-16 300 360)">
+                  {/* main mass */}
+                  <rect x="170" y="120" width="270" height="470" rx="135" fill="url(#brushEmerald)" opacity="0.95" />
+                  <rect x="120" y="170" width="120" height="400" rx="60" fill="#0E5540" opacity="0.8" />
+                  <rect x="400" y="150" width="120" height="420" rx="60" fill="#1F8A6E" opacity="0.85" />
+                  {/* cross marks for texture */}
+                  <rect x="150" y="430" width="320" height="78" rx="39" fill="#177D63" opacity="0.7" />
+                  <rect x="200" y="150" width="250" height="64" rx="32" fill="#177D63" opacity="0.6" />
+                  {/* amber accent stroke */}
+                  <rect x="300" y="90" width="58" height="500" rx="29" fill="#C8852C" opacity="0.5" />
+                  <rect x="360" y="300" width="200" height="50" rx="25" fill="#C8852C" opacity="0.45" />
+                </g>
+              </svg>
+
+              {/* Soft contact shadow under the figure */}
               <div
-                className="absolute -inset-8 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(60% 55% at 55% 45%, rgba(23,125,99,0.16) 0%, transparent 70%), radial-gradient(50% 50% at 30% 80%, rgba(191,130,48,0.12) 0%, transparent 70%)",
-                }}
+                className="absolute bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-10 rounded-[50%] pointer-events-none"
+                style={{ background: "radial-gradient(ellipse at center, rgba(31,27,23,0.18) 0%, transparent 70%)" }}
               />
 
-              {/* Offset accent frame behind (depth) */}
-              <div className="absolute inset-0 translate-x-4 translate-y-5 rounded-tl-[5.5rem] rounded-br-[5.5rem] rounded-tr-[1.4rem] rounded-bl-[1.4rem] border-2 border-[rgba(23,125,99,0.4)] hidden sm:block" />
-
-              {/* Amber dotted frame accent */}
-              <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-tl-[5.5rem] rounded-br-[5.5rem] rounded-tr-[1.4rem] rounded-bl-[1.4rem] border-2 border-dashed border-[rgba(191,130,48,0.35)] hidden lg:block" />
-
-              {/* Portrait photo — arch frame */}
-              <div className="relative aspect-[4/5] w-full rounded-tl-[5.5rem] rounded-br-[5.5rem] rounded-tr-[1.4rem] rounded-bl-[1.4rem] overflow-hidden bg-white border border-[#E6E0D5] shadow-[0_18px_50px_rgba(31,27,23,0.16),0_4px_14px_rgba(31,27,23,0.08)]">
-                <Image
-                  src="/moinul.png"
-                  alt={personal.name}
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 256px, (max-width: 1024px) 288px, 320px"
-                  className="object-cover object-[center_top]"
-                />
-                {/* Subtle warm vignette to blend bottom into the page */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, transparent 62%, rgba(244,241,234,0.45) 100%)",
-                  }}
-                />
-                {/* Top sheen */}
-                <div
-                  className="absolute inset-x-0 top-0 h-24"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%)",
-                  }}
-                />
-              </div>
-
-              {/* Corner accent — small amber square */}
-              <div className="absolute -top-2 left-6 w-3 h-3 rounded-[3px] bg-[#BF8230] hidden sm:block" />
+              {/* Cut-out portrait */}
+              <Image
+                src="/moinul-cutout.png"
+                alt={personal.name}
+                fill
+                priority
+                sizes="(max-width: 640px) 288px, (max-width: 1024px) 336px, 400px"
+                className="object-contain object-bottom drop-shadow-[0_18px_28px_rgba(31,27,23,0.22)]"
+              />
 
               {/* Floating stat badge — bottom left */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -left-3 lg:-left-7 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-white border border-[#E6E0D5] shadow-[0_10px_30px_rgba(31,27,23,0.12)]"
+                className="absolute bottom-10 -left-2 lg:-left-6 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-white border border-[#E6E0D5] shadow-[0_10px_30px_rgba(31,27,23,0.14)] z-10"
               >
                 <div className="w-8 h-8 rounded-lg bg-[rgba(23,125,99,0.1)] flex items-center justify-center">
                   <span className="text-[#177D63] text-sm font-bold">✓</span>
@@ -260,7 +262,7 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                className="absolute top-6 -right-3 lg:-right-8 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-white border border-[#E6E0D5] shadow-[0_10px_30px_rgba(31,27,23,0.12)]"
+                className="absolute top-12 -right-2 lg:-right-6 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-white border border-[#E6E0D5] shadow-[0_10px_30px_rgba(31,27,23,0.14)] z-10"
               >
                 <div className="w-8 h-8 rounded-lg bg-[rgba(191,130,48,0.1)] flex items-center justify-center">
                   <span className="text-[#BF8230] text-sm font-bold">★</span>
@@ -269,15 +271,6 @@ export function Hero() {
                   <p className="text-[#1F1B17] text-xs font-bold">5+ Years</p>
                   <p className="text-[#8C8278] text-[10px]">Experience</p>
                 </div>
-              </motion.div>
-
-              {/* Floating agency badge — bottom right */}
-              <motion.div
-                animate={{ x: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute bottom-16 -right-6 hidden lg:flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-[#E6E0D5] shadow-[0_8px_24px_rgba(31,27,23,0.12)]"
-              >
-                <span className="text-[#177D63] text-[10px] font-mono font-bold tracking-wider">MiBrand</span>
               </motion.div>
             </div>
           </motion.div>
