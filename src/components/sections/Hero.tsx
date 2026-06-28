@@ -192,53 +192,58 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex justify-center order-1 lg:order-2"
           >
-            <div className="relative">
-              {/* Outer glow ring */}
-              <motion.div
-                animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.05, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-6 rounded-full"
-                style={{
-                  background: "radial-gradient(circle, rgba(23,125,99,0.15) 0%, transparent 70%)",
-                }}
-              />
-
-              {/* Rotating conic ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-1.5 rounded-full"
+            <div className="relative w-64 sm:w-72 lg:w-[20rem]">
+              {/* Soft ambient glow */}
+              <div
+                className="absolute -inset-8 pointer-events-none"
                 style={{
                   background:
-                    "conic-gradient(from 0deg, transparent 0deg, rgba(23,125,99,0.6) 90deg, transparent 180deg, rgba(191,130,48,0.5) 270deg, transparent 360deg)",
+                    "radial-gradient(60% 55% at 55% 45%, rgba(23,125,99,0.16) 0%, transparent 70%), radial-gradient(50% 50% at 30% 80%, rgba(191,130,48,0.12) 0%, transparent 70%)",
                 }}
               />
 
-              {/* Avatar with real photo */}
-              <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-[rgba(23,125,99,0.35)] shadow-[0_0_60px_rgba(23,125,99,0.18),0_0_120px_rgba(23,125,99,0.06)]">
+              {/* Offset accent frame behind (depth) */}
+              <div className="absolute inset-0 translate-x-4 translate-y-5 rounded-t-[11rem] rounded-b-[1.75rem] border-2 border-[rgba(23,125,99,0.4)] hidden sm:block" />
+
+              {/* Amber dotted frame accent */}
+              <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-t-[11rem] rounded-b-[1.75rem] border-2 border-dashed border-[rgba(191,130,48,0.35)] hidden lg:block" />
+
+              {/* Portrait photo — arch frame */}
+              <div className="relative aspect-[4/5] w-full rounded-t-[11rem] rounded-b-[1.75rem] overflow-hidden bg-white border border-[#E6E0D5] shadow-[0_18px_50px_rgba(31,27,23,0.16),0_4px_14px_rgba(31,27,23,0.08)]">
                 <Image
                   src="/moinul.png"
                   alt={personal.name}
                   fill
                   priority
-                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 288px, 320px"
-                  className="object-cover object-[center_22%] scale-[1.35]"
+                  sizes="(max-width: 640px) 256px, (max-width: 1024px) 288px, 320px"
+                  className="object-cover object-[center_top]"
                 />
-                {/* Subtle gradient overlay to blend with theme */}
+                {/* Subtle warm vignette to blend bottom into the page */}
                 <div
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(180deg, transparent 55%, rgba(244,241,234,0.55) 100%)",
+                      "linear-gradient(180deg, transparent 62%, rgba(244,241,234,0.45) 100%)",
+                  }}
+                />
+                {/* Top sheen */}
+                <div
+                  className="absolute inset-x-0 top-0 h-24"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%)",
                   }}
                 />
               </div>
+
+              {/* Corner accent — small amber square */}
+              <div className="absolute -top-2 left-6 w-3 h-3 rounded-[3px] bg-[#BF8230] hidden sm:block" />
 
               {/* Floating stat badge — bottom left */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -left-4 lg:-bottom-5 lg:-left-8 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-[#FFFFFF] border border-[#E6E0D5] shadow-xl shadow-black/40"
+                className="absolute -bottom-4 -left-3 lg:-left-7 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-white border border-[#E6E0D5] shadow-[0_10px_30px_rgba(31,27,23,0.12)]"
               >
                 <div className="w-8 h-8 rounded-lg bg-[rgba(23,125,99,0.1)] flex items-center justify-center">
                   <span className="text-[#177D63] text-sm font-bold">✓</span>
@@ -253,7 +258,7 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                className="absolute -top-4 -right-4 lg:-top-5 lg:-right-8 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-[#FFFFFF] border border-[#E6E0D5] shadow-xl shadow-black/40"
+                className="absolute top-6 -right-3 lg:-right-8 flex items-center gap-2.5 px-3.5 py-2 lg:px-4 lg:py-2.5 rounded-2xl bg-white border border-[#E6E0D5] shadow-[0_10px_30px_rgba(31,27,23,0.12)]"
               >
                 <div className="w-8 h-8 rounded-lg bg-[rgba(191,130,48,0.1)] flex items-center justify-center">
                   <span className="text-[#BF8230] text-sm font-bold">★</span>
@@ -264,11 +269,11 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              {/* Floating agency badge — right */}
+              {/* Floating agency badge — bottom right */}
               <motion.div
                 animate={{ x: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute top-1/2 -right-14 -translate-y-1/2 hidden lg:flex items-center gap-2 px-3 py-2 rounded-xl bg-[#FFFFFF] border border-[#E6E0D5] shadow-lg shadow-black/40"
+                className="absolute bottom-16 -right-6 hidden lg:flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-[#E6E0D5] shadow-[0_8px_24px_rgba(31,27,23,0.12)]"
               >
                 <span className="text-[#177D63] text-[10px] font-mono font-bold tracking-wider">MiBrand</span>
               </motion.div>
