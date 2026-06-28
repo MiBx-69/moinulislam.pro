@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { personal } from "@/data";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -63,8 +64,16 @@ export function Navbar() {
               );
             })}
             <a
+              href={personal.cvUrl}
+              download
+              className="ml-3 flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold rounded-xl text-[#94A3B8] border border-[#1a2640] hover:text-white hover:border-[rgba(0,217,255,0.4)] transition-all duration-200"
+            >
+              <Download size={14} />
+              CV
+            </a>
+            <a
               href="#contact"
-              className="ml-3 px-5 py-2 text-sm font-bold rounded-xl bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-all duration-200 shadow-md shadow-[rgba(0,217,255,0.2)] hover:shadow-[rgba(0,217,255,0.35)] hover:-translate-y-0.5"
+              className="ml-2 px-5 py-2 text-sm font-bold rounded-xl bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-all duration-200 shadow-md shadow-[rgba(0,217,255,0.2)] hover:shadow-[rgba(0,217,255,0.35)] hover:-translate-y-0.5"
             >
               Hire Me
             </a>
@@ -96,9 +105,18 @@ export function Navbar() {
               </a>
             ))}
             <a
+              href={personal.cvUrl}
+              download
+              onClick={() => setMobileOpen(false)}
+              className="mt-6 flex items-center justify-center gap-2 py-3.5 font-semibold text-white border border-[#1a2640] rounded-xl hover:border-[rgba(0,217,255,0.4)] transition-colors"
+            >
+              <Download size={16} />
+              Download CV
+            </a>
+            <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-6 py-3.5 text-center font-bold bg-[#00D9FF] text-[#0B0F19] rounded-xl hover:bg-[#00c4e8] transition-colors shadow-lg shadow-[rgba(0,217,255,0.2)]"
+              className="mt-3 py-3.5 text-center font-bold bg-[#00D9FF] text-[#0B0F19] rounded-xl hover:bg-[#00c4e8] transition-colors shadow-lg shadow-[rgba(0,217,255,0.2)]"
             >
               Hire Me
             </a>

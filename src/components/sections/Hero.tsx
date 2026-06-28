@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { MapPin, Mail, Phone, Globe, Link2, ArrowRight } from "lucide-react";
+import { MapPin, Mail, Phone, Globe, Link2, ArrowRight, Download } from "lucide-react";
 import { personal } from "@/data";
 
 export function Hero() {
@@ -130,7 +130,7 @@ export function Hero() {
             </motion.p>
 
             {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mb-9">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mb-6">
               <a
                 href="#contact"
                 className="group flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-all duration-200 shadow-lg shadow-[rgba(0,217,255,0.25)] hover:shadow-[rgba(0,217,255,0.4)] hover:-translate-y-0.5"
@@ -147,12 +147,27 @@ export function Hero() {
               </a>
             </motion.div>
 
+            {/* Download CV */}
+            <motion.div variants={itemVariants} className="mb-9">
+              <a
+                href={personal.cvUrl}
+                download
+                className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl font-semibold text-sm text-white border border-[#1a2640] bg-[#0f1623] hover:border-[rgba(0,217,255,0.4)] hover:bg-[#111c2e] transition-all duration-200"
+              >
+                <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-[rgba(0,217,255,0.1)] group-hover:bg-[rgba(0,217,255,0.18)] transition-colors">
+                  <Download size={14} className="text-[#00D9FF] group-hover:translate-y-0.5 transition-transform" />
+                </span>
+                Download CV
+                <span className="text-[10px] font-mono text-[#64748B]">PDF</span>
+              </a>
+            </motion.div>
+
             {/* Social links */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
               {[
                 { icon: Link2, label: "LinkedIn", href: personal.linkedin },
                 { icon: Mail, label: "Email", href: `mailto:${personal.email}` },
-                { icon: Globe, label: "Agency", href: personal.website },
+                { icon: Globe, label: "MiBrand Agency", href: personal.agencyUrl },
                 { icon: Phone, label: "Phone", href: `tel:${personal.phone}` },
               ].map(({ icon: Icon, label, href }) => (
                 <a

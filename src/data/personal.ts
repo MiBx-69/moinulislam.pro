@@ -17,5 +17,7 @@ export const personal: PersonalInfo = {
   phone: "+8801605956421",
   whatsapp: "8801605956421",
   website: "https://moinul.mibrand.agency",
+  agencyUrl: "https://mibrand.agency",
+  cvUrl: "/Moinul-Islam-Bappi-CV.pdf",
   linkedin: "https://linkedin.com/in/moinul-islam-bappi",
 };

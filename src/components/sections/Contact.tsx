@@ -41,8 +41,8 @@ export function Contact() {
     {
       icon: Globe,
       label: "Agency",
-      value: "moinul.mibrand.agency",
-      href: personal.website,
+      value: "mibrand.agency",
+      href: personal.agencyUrl,
       color: "#3B82F6",
       bg: "rgba(59,130,246,0.08)",
       external: true,

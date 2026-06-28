@@ -54,5 +54,7 @@ export interface PersonalInfo {
   phone: string;
   whatsapp: string;
   website: string;
+  agencyUrl: string;
+  cvUrl: string;
   linkedin: string;
 }
