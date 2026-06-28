@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { MapPin, Mail, Phone, Globe, Link2, ArrowRight } from "lucide-react";
 import { personal } from "@/data";
@@ -186,33 +187,35 @@ export function Hero() {
                 }}
               />
 
-              {/* Avatar ring */}
-              <div className="relative w-80 h-80 rounded-full overflow-hidden border-2 border-[rgba(0,217,255,0.35)] shadow-[0_0_60px_rgba(0,217,255,0.15),0_0_120px_rgba(0,217,255,0.05)]">
+              {/* Rotating conic ring */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-1.5 rounded-full"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, transparent 0deg, rgba(0,217,255,0.6) 90deg, transparent 180deg, rgba(59,130,246,0.5) 270deg, transparent 360deg)",
+                }}
+              />
+
+              {/* Avatar with real photo */}
+              <div className="relative w-80 h-80 rounded-full overflow-hidden border-2 border-[rgba(0,217,255,0.35)] shadow-[0_0_60px_rgba(0,217,255,0.18),0_0_120px_rgba(0,217,255,0.06)]">
+                <Image
+                  src="/moinul.png"
+                  alt={personal.name}
+                  fill
+                  priority
+                  sizes="320px"
+                  className="object-cover object-[center_22%] scale-[1.35]"
+                />
+                {/* Subtle gradient overlay to blend with theme */}
                 <div
-                  className="w-full h-full flex items-center justify-center"
+                  className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(145deg, #111827 0%, #1A2235 40%, #0D1117 100%)",
+                      "linear-gradient(180deg, transparent 55%, rgba(11,15,25,0.55) 100%)",
                   }}
-                >
-                  {/* Decorative grid inside avatar */}
-                  <div className="absolute inset-0 grid-bg opacity-20" />
-                  <div className="relative text-center z-10">
-                    <div
-                      className="text-7xl font-heading font-bold mb-2"
-                      style={{
-                        background: "linear-gradient(135deg, #00D9FF 0%, #3B82F6 100%)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      MI
-                    </div>
-                    <div className="text-xs text-[#64748B] font-mono tracking-[0.25em] uppercase">
-                      Moinul Islam
-                    </div>
-                  </div>
-                </div>
+                />
               </div>
 
               {/* Floating stat badge — bottom left */}

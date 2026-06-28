@@ -15,6 +15,7 @@ export const personal: PersonalInfo = {
   available: true,
   email: "mib.bappi360@gmail.com",
   phone: "+8801605956421",
+  whatsapp: "8801605956421",
   website: "https://moinul.mibrand.agency",
   linkedin: "https://linkedin.com/in/moinul-islam-bappi",
 };

@@ -52,6 +52,7 @@ export interface PersonalInfo {
   available: boolean;
   email: string;
   phone: string;
+  whatsapp: string;
   website: string;
   linkedin: string;
 }
