@@ -34,8 +34,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 const ACCENT_CYCLE = [
-  { icon: "#00D9FF", bg: "rgba(0,217,255,0.08)", border: "rgba(0,217,255,0.14)" },
-  { icon: "#3B82F6", bg: "rgba(59,130,246,0.08)", border: "rgba(59,130,246,0.14)" },
+  { icon: "#177D63", bg: "rgba(23,125,99,0.08)", border: "rgba(23,125,99,0.14)" },
+  { icon: "#BF8230", bg: "rgba(191,130,48,0.08)", border: "rgba(191,130,48,0.14)" },
 ];
 
 export function Competencies() {
@@ -49,7 +49,7 @@ export function Competencies() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 50% 40% at 80% 30%, rgba(0,217,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 50% 40% at 80% 30%, rgba(23,125,99,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -61,10 +61,10 @@ export function Competencies() {
           className="mb-12"
         >
           <span className="section-label">What I Do</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1F1B17] mb-4">
             Core Competencies
           </h2>
-          <p className="text-[#94A3B8] max-w-xl leading-relaxed">
+          <p className="text-[#5A534B] max-w-xl leading-relaxed">
             A broad set of skills covering digital growth, technical systems, and business operations.
           </p>
         </motion.div>
@@ -81,7 +81,7 @@ export function Competencies() {
                 transition={{ duration: 0.4, delay: 0.08 + i * 0.05 }}
                 className="group flex items-center gap-3.5 p-4 rounded-xl border transition-all duration-250 hover:-translate-y-0.5 cursor-default"
                 style={{
-                  background: "linear-gradient(135deg, #0f1623 0%, #0d1420 100%)",
+                  background: "linear-gradient(135deg, #FFFFFF 0%, #FBF9F4 100%)",
                   borderColor: colors.border,
                 }}
               >
@@ -91,7 +91,7 @@ export function Competencies() {
                 >
                   <Icon size={16} style={{ color: colors.icon }} />
                 </div>
-                <span className="text-sm text-[#94A3B8] leading-snug group-hover:text-white transition-colors">
+                <span className="text-sm text-[#5A534B] leading-snug group-hover:text-[#1F1B17] transition-colors">
                   {item.label}
                 </span>
               </motion.div>

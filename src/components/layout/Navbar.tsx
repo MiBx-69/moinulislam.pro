@@ -30,7 +30,7 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[rgba(11,15,25,0.92)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.06)] shadow-[0_1px_0_rgba(0,217,255,0.06)]"
+            ? "bg-[rgba(244,241,234,0.92)] backdrop-blur-xl border-b border-[rgba(31,27,23,0.06)] shadow-[0_1px_0_rgba(23,125,99,0.06)]"
             : "bg-transparent"
         }`}
       >
@@ -38,10 +38,10 @@ export function Navbar() {
           {/* Logo */}
           <a
             href="#hero"
-            className="font-heading font-bold text-xl text-white tracking-tight hover:text-[#00D9FF] transition-colors group"
+            className="font-heading font-bold text-xl text-[#1F1B17] tracking-tight hover:text-[#177D63] transition-colors group"
           >
             Moinul
-            <span className="text-[#00D9FF] group-hover:text-white transition-colors">.</span>
+            <span className="text-[#177D63] group-hover:text-[#1F1B17] transition-colors">.</span>
           </a>
 
           {/* Desktop nav */}
@@ -55,8 +55,8 @@ export function Navbar() {
                   href={link.href}
                   className={`px-3.5 py-1.5 text-sm rounded-lg transition-all duration-200 font-medium ${
                     isActive
-                      ? "text-[#00D9FF] bg-[rgba(0,217,255,0.08)]"
-                      : "text-[#94A3B8] hover:text-white hover:bg-[rgba(255,255,255,0.04)]"
+                      ? "text-[#177D63] bg-[rgba(23,125,99,0.08)]"
+                      : "text-[#5A534B] hover:text-[#1F1B17] hover:bg-[rgba(31,27,23,0.04)]"
                   }`}
                 >
                   {link.label}
@@ -66,14 +66,14 @@ export function Navbar() {
             <a
               href={personal.cvUrl}
               download
-              className="ml-3 flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold rounded-xl text-[#94A3B8] border border-[#1a2640] hover:text-white hover:border-[rgba(0,217,255,0.4)] transition-all duration-200"
+              className="ml-3 flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold rounded-xl text-[#5A534B] border border-[#E6E0D5] hover:text-[#1F1B17] hover:border-[rgba(23,125,99,0.4)] transition-all duration-200"
             >
               <Download size={14} />
               CV
             </a>
             <a
               href="#contact"
-              className="ml-2 px-5 py-2 text-sm font-bold rounded-xl bg-[#00D9FF] text-[#0B0F19] hover:bg-[#00c4e8] transition-all duration-200 shadow-md shadow-[rgba(0,217,255,0.2)] hover:shadow-[rgba(0,217,255,0.35)] hover:-translate-y-0.5"
+              className="ml-2 px-5 py-2 text-sm font-bold rounded-xl bg-[#177D63] text-[#F4F1EA] hover:bg-[#13694F] transition-all duration-200 shadow-md shadow-[rgba(23,125,99,0.2)] hover:shadow-[rgba(23,125,99,0.35)] hover:-translate-y-0.5"
             >
               Hire Me
             </a>
@@ -81,7 +81,7 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 text-[#94A3B8] hover:text-white transition-colors"
+            className="md:hidden p-2 text-[#5A534B] hover:text-[#1F1B17] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -92,14 +92,14 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-[rgba(11,15,25,0.98)] backdrop-blur-xl flex flex-col pt-20 px-6">
+        <div className="fixed inset-0 z-40 bg-[rgba(244,241,234,0.98)] backdrop-blur-xl flex flex-col pt-20 px-6">
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="py-4 text-xl font-semibold text-[#94A3B8] border-b border-[#1a2640] hover:text-[#00D9FF] transition-colors"
+                className="py-4 text-xl font-semibold text-[#5A534B] border-b border-[#E6E0D5] hover:text-[#177D63] transition-colors"
               >
                 {link.label}
               </a>
@@ -108,7 +108,7 @@ export function Navbar() {
               href={personal.cvUrl}
               download
               onClick={() => setMobileOpen(false)}
-              className="mt-6 flex items-center justify-center gap-2 py-3.5 font-semibold text-white border border-[#1a2640] rounded-xl hover:border-[rgba(0,217,255,0.4)] transition-colors"
+              className="mt-6 flex items-center justify-center gap-2 py-3.5 font-semibold text-[#1F1B17] border border-[#E6E0D5] rounded-xl hover:border-[rgba(23,125,99,0.4)] transition-colors"
             >
               <Download size={16} />
               Download CV
@@ -116,7 +116,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-3 py-3.5 text-center font-bold bg-[#00D9FF] text-[#0B0F19] rounded-xl hover:bg-[#00c4e8] transition-colors shadow-lg shadow-[rgba(0,217,255,0.2)]"
+              className="mt-3 py-3.5 text-center font-bold bg-[#177D63] text-[#F4F1EA] rounded-xl hover:bg-[#13694F] transition-colors shadow-lg shadow-[rgba(23,125,99,0.2)]"
             >
               Hire Me
             </a>

@@ -25,8 +25,8 @@ export function Contact() {
       icon: Mail,
       label: "Email",
       value: personal.email,
-      color: "#00D9FF",
-      bg: "rgba(0,217,255,0.08)",
+      color: "#177D63",
+      bg: "rgba(23,125,99,0.08)",
       onClick: copyEmail,
       copyable: true,
     },
@@ -35,16 +35,16 @@ export function Contact() {
       label: "Phone",
       value: personal.phone,
       href: `tel:${personal.phone}`,
-      color: "#00D9FF",
-      bg: "rgba(0,217,255,0.08)",
+      color: "#177D63",
+      bg: "rgba(23,125,99,0.08)",
     },
     {
       icon: Globe,
       label: "Agency",
       value: "mibrand.agency",
       href: personal.agencyUrl,
-      color: "#3B82F6",
-      bg: "rgba(59,130,246,0.08)",
+      color: "#BF8230",
+      bg: "rgba(191,130,48,0.08)",
       external: true,
     },
     {
@@ -52,8 +52,8 @@ export function Contact() {
       label: "LinkedIn",
       value: "View Profile",
       href: personal.linkedin,
-      color: "#3B82F6",
-      bg: "rgba(59,130,246,0.08)",
+      color: "#BF8230",
+      bg: "rgba(191,130,48,0.08)",
       external: true,
     },
   ];
@@ -65,7 +65,7 @@ export function Contact() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 80%, rgba(0,217,255,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 80%, rgba(23,125,99,0.05) 0%, transparent 70%)",
         }}
       />
 
@@ -76,13 +76,13 @@ export function Contact() {
           transition={{ duration: 0.5 }}
           className="mb-12 text-center max-w-2xl mx-auto"
         >
-          <span className="block text-[11px] font-mono font-semibold tracking-widest uppercase text-[#00D9FF] mb-3">
+          <span className="block text-[11px] font-mono font-semibold tracking-widest uppercase text-[#177D63] mb-3">
             Get in Touch
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1F1B17] mb-4">
             Let&apos;s Build Something Together
           </h2>
-          <p className="text-[#94A3B8] leading-relaxed">
+          <p className="text-[#5A534B] leading-relaxed">
             Have a project in mind, need SEO strategy, or want to automate your operations?
             Message me directly on WhatsApp — I usually reply within minutes.
           </p>
@@ -102,14 +102,14 @@ export function Contact() {
             className="group relative block overflow-hidden rounded-2xl p-[1px] transition-transform duration-200 hover:-translate-y-0.5"
             style={{
               background:
-                "linear-gradient(135deg, rgba(37,211,102,0.5), rgba(0,217,255,0.3))",
+                "linear-gradient(135deg, rgba(37,211,102,0.5), rgba(23,125,99,0.3))",
             }}
           >
             <div
               className="relative rounded-2xl p-6 sm:p-7 flex items-center gap-5"
               style={{
                 background:
-                  "linear-gradient(135deg, #0f1623 0%, #0d1420 100%)",
+                  "linear-gradient(135deg, #FFFFFF 0%, #FBF9F4 100%)",
               }}
             >
               {/* Glow */}
@@ -133,10 +133,10 @@ export function Contact() {
                 <p className="text-[11px] font-mono uppercase tracking-widest text-[#25D366] mb-1 font-semibold">
                   Instant Chat
                 </p>
-                <p className="text-white font-heading font-bold text-lg sm:text-xl leading-tight">
+                <p className="text-[#1F1B17] font-heading font-bold text-lg sm:text-xl leading-tight">
                   Message me on WhatsApp
                 </p>
-                <p className="text-[#64748B] text-sm mt-0.5">{personal.phone}</p>
+                <p className="text-[#8C8278] text-sm mt-0.5">{personal.phone}</p>
               </div>
 
               <div className="relative flex-shrink-0 flex items-center gap-1 text-[#25D366] font-semibold text-sm">
@@ -159,7 +159,7 @@ export function Contact() {
         >
           <div className="flex items-center gap-3 mb-5">
             <div className="flex-1 glow-line" />
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#64748B]">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#8C8278]">
               Or reach me here
             </span>
             <div className="flex-1 glow-line" />
@@ -177,15 +177,15 @@ export function Contact() {
                     <Icon size={14} style={{ color: item.color }} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[10px] text-[#64748B] mb-0.5 font-mono uppercase tracking-wider">
+                    <p className="text-[10px] text-[#8C8278] mb-0.5 font-mono uppercase tracking-wider">
                       {item.label}
                     </p>
-                    <p className="text-sm text-white truncate group-hover:text-[#00D9FF] transition-colors">
+                    <p className="text-sm text-[#1F1B17] truncate group-hover:text-[#177D63] transition-colors">
                       {item.value}
                     </p>
                   </div>
                   {item.copyable && (
-                    <span className="flex-shrink-0 text-[#64748B] group-hover:text-[#00D9FF] transition-colors">
+                    <span className="flex-shrink-0 text-[#8C8278] group-hover:text-[#177D63] transition-colors">
                       {copied ? <Check size={13} /> : <Copy size={13} />}
                     </span>
                   )}
@@ -222,7 +222,7 @@ export function Contact() {
             <motion.p
               initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[11px] text-[#00D9FF] font-mono text-center mt-4"
+              className="text-[11px] text-[#177D63] font-mono text-center mt-4"
             >
               ✓ Email copied to clipboard
             </motion.p>
@@ -234,7 +234,7 @@ export function Contact() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]" />
             </span>
-            <span className="text-xs text-[#64748B]">
+            <span className="text-xs text-[#8C8278]">
               Available for new projects & collaborations
             </span>
           </div>

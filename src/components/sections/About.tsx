@@ -28,7 +28,7 @@ export function About() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 20% 60%, rgba(59,130,246,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 40% at 20% 60%, rgba(191,130,48,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -40,7 +40,7 @@ export function About() {
           className="mb-12"
         >
           <span className="section-label">About Me</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1F1B17] mb-4">
             Professional Summary
           </h2>
         </motion.div>
@@ -53,22 +53,22 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-3"
           >
-            <p className="text-[#94A3B8] text-base md:text-lg leading-relaxed mb-7">
+            <p className="text-[#5A534B] text-base md:text-lg leading-relaxed mb-7">
               {personal.summary}
             </p>
 
             <div className="flex flex-wrap gap-4 mb-9 text-sm">
-              <span className="flex items-center gap-1.5 text-[#94A3B8]">
-                <MapPin size={13} className="text-[#00D9FF]" />
+              <span className="flex items-center gap-1.5 text-[#5A534B]">
+                <MapPin size={13} className="text-[#177D63]" />
                 {personal.location}
               </span>
-              <span className="flex items-center gap-1.5 text-[#94A3B8]">
-                <Globe size={13} className="text-[#00D9FF]" />
+              <span className="flex items-center gap-1.5 text-[#5A534B]">
+                <Globe size={13} className="text-[#177D63]" />
                 <a
                   href={personal.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#00D9FF] transition-colors"
+                  className="hover:text-[#177D63] transition-colors"
                 >
                   moinul.mibrand.agency
                 </a>
@@ -86,9 +86,9 @@ export function About() {
                 >
                   <CheckCircle
                     size={14}
-                    className="text-[#00D9FF] mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform"
+                    className="text-[#177D63] mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform"
                   />
-                  <span className="text-sm text-[#94A3B8] leading-snug">{item}</span>
+                  <span className="text-sm text-[#5A534B] leading-snug">{item}</span>
                 </motion.div>
               ))}
             </div>
@@ -106,25 +106,25 @@ export function About() {
                 label: "Current Role",
                 value: "Head of IT & Online Executive",
                 sub: "Universes E-commerce",
-                color: "#00D9FF",
+                color: "#177D63",
               },
               {
                 label: "Agency",
                 value: "MiBrand Agency",
                 sub: "Founder & SEO Specialist",
-                color: "#3B82F6",
+                color: "#BF8230",
               },
               {
                 label: "Freelancing",
                 value: "2021 – Present",
                 sub: "SEO & Digital Marketing",
-                color: "#00D9FF",
+                color: "#177D63",
               },
               {
                 label: "Expertise",
                 value: "SEO + AI + Automation",
                 sub: "E-commerce & Systems",
-                color: "#3B82F6",
+                color: "#BF8230",
               },
             ].map((card, i) => (
               <motion.div
@@ -136,13 +136,13 @@ export function About() {
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <p className="text-[10px] font-mono text-[#64748B] uppercase tracking-widest mb-1.5">
+                    <p className="text-[10px] font-mono text-[#8C8278] uppercase tracking-widest mb-1.5">
                       {card.label}
                     </p>
-                    <p className="text-white font-semibold text-sm leading-snug mb-0.5">
+                    <p className="text-[#1F1B17] font-semibold text-sm leading-snug mb-0.5">
                       {card.value}
                     </p>
-                    <p className="text-[#64748B] text-xs">{card.sub}</p>
+                    <p className="text-[#8C8278] text-xs">{card.sub}</p>
                   </div>
                   <div
                     className="w-2 h-2 rounded-full mt-1 flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity"

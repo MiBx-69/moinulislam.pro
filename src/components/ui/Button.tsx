@@ -18,7 +18,7 @@ export function Button({
   const classes = cn(
     "inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 cursor-pointer",
     {
-      "bg-[var(--accent)] text-white hover:bg-[var(--accent-hover)] shadow-lg shadow-[var(--accent)]/20":
+      "bg-[var(--accent)] text-[#1F1B17] hover:bg-[var(--accent-hover)] shadow-lg shadow-[var(--accent)]/20":
         variant === "primary",
       "bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-elevated)] border border-[var(--border)]":
         variant === "ghost",

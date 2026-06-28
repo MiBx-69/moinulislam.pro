@@ -31,7 +31,7 @@ export function Skills() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 50% 40% at 20% 50%, rgba(0,217,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 50% 40% at 20% 50%, rgba(23,125,99,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -43,10 +43,10 @@ export function Skills() {
           className="mb-12"
         >
           <span className="section-label">Toolkit</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1F1B17] mb-4">
             Technical Skills
           </h2>
-          <p className="text-[#94A3B8] max-w-xl leading-relaxed">
+          <p className="text-[#5A534B] max-w-xl leading-relaxed">
             Tools, platforms, and technologies I use to build and deliver results.
           </p>
         </motion.div>
@@ -68,16 +68,16 @@ export function Skills() {
                     className="p-2.5 rounded-xl transition-transform group-hover:scale-105"
                     style={{
                       background: isBlue
-                        ? "rgba(59,130,246,0.1)"
-                        : "rgba(0,217,255,0.1)",
+                        ? "rgba(191,130,48,0.1)"
+                        : "rgba(23,125,99,0.1)",
                     }}
                   >
                     <Icon
                       size={15}
-                      style={{ color: isBlue ? "#3B82F6" : "#00D9FF" }}
+                      style={{ color: isBlue ? "#BF8230" : "#177D63" }}
                     />
                   </div>
-                  <h3 className="font-heading font-bold text-white text-sm">
+                  <h3 className="font-heading font-bold text-[#1F1B17] text-sm">
                     {group.category}
                   </h3>
                 </div>

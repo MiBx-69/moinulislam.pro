@@ -21,7 +21,7 @@ export function ScrollProgress() {
       className="fixed top-0 left-0 h-[2px] z-50 transition-all duration-75"
       style={{
         width: `${progress}%`,
-        background: "linear-gradient(90deg, #00D9FF, #3B82F6)",
+        background: "linear-gradient(90deg, #177D63, #BF8230)",
       }}
     />
   );

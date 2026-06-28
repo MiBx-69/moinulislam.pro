@@ -35,12 +35,12 @@ export function FloatingWhatsApp() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 10 }}
-                className="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#111827] border border-[#1a2640] shadow-xl shadow-black/40"
+                className="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FFFFFF] border border-[#E6E0D5] shadow-xl shadow-black/40"
               >
-                <span className="text-sm text-white font-medium">Chat with me on WhatsApp</span>
+                <span className="text-sm text-[#1F1B17] font-medium">Chat with me on WhatsApp</span>
                 <button
                   onClick={() => setTipOpen(false)}
-                  className="text-[#64748B] hover:text-white transition-colors"
+                  className="text-[#8C8278] hover:text-[#1F1B17] transition-colors"
                   aria-label="Dismiss"
                 >
                   <X size={14} />

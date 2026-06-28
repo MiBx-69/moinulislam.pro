@@ -10,22 +10,22 @@ const config: Config = {
     extend: {
       colors: {
         navy: {
-          primary: "#0B0F19",
-          secondary: "#0D1117",
-          card: "#111827",
-          "card-hover": "#1A2235",
-          border: "#1E293B",
+          primary: "#F4F1EA",
+          secondary: "#EFEAE1",
+          card: "#FFFFFF",
+          "card-hover": "#FBF9F4",
+          border: "#E6E0D5",
         },
         accent: {
-          DEFAULT: "#00D9FF",
-          blue: "#3B82F6",
-          glow: "rgba(0, 217, 255, 0.15)",
-          "border": "rgba(0, 217, 255, 0.25)",
+          DEFAULT: "#177D63",
+          blue: "#BF8230",
+          glow: "rgba(23, 125, 99, 0.10)",
+          "border": "rgba(23, 125, 99, 0.30)",
         },
         text: {
-          primary: "#F1F5F9",
-          secondary: "#94A3B8",
-          muted: "#64748B",
+          primary: "#1F1B17",
+          secondary: "#5A534B",
+          muted: "#8C8278",
         },
       },
       fontFamily: {
@@ -44,15 +44,15 @@ const config: Config = {
           "50%": { transform: "translateY(-10px)" },
         },
         glowPulse: {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(0,217,255,0.2)" },
-          "50%": { boxShadow: "0 0 40px rgba(0,217,255,0.5)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(23,125,99,0.15)" },
+          "50%": { boxShadow: "0 0 40px rgba(23,125,99,0.3)" },
         },
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(rgba(30,41,59,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(30,41,59,0.5) 1px, transparent 1px)",
-        "accent-gradient": "linear-gradient(135deg, #00D9FF 0%, #3B82F6 100%)",
-        "card-gradient": "linear-gradient(135deg, #111827 0%, #1A2235 100%)",
+          "linear-gradient(rgba(31,27,23,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(31,27,23,0.05) 1px, transparent 1px)",
+        "accent-gradient": "linear-gradient(135deg, #177D63 0%, #BF8230 100%)",
+        "card-gradient": "linear-gradient(135deg, #FFFFFF 0%, #FBF9F4 100%)",
       },
       backgroundSize: {
         "grid": "40px 40px",

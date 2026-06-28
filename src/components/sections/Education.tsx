@@ -16,7 +16,7 @@ export function Education() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 50% 40% at 70% 40%, rgba(59,130,246,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 50% 40% at 70% 40%, rgba(191,130,48,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -28,7 +28,7 @@ export function Education() {
           className="mb-12"
         >
           <span className="section-label">Background</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1F1B17] mb-4">
             Education & Certifications
           </h2>
         </motion.div>
@@ -36,7 +36,7 @@ export function Education() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Education & Certs */}
           <div>
-            <p className="text-[10px] font-mono text-[#64748B] uppercase tracking-widest mb-5 font-semibold">
+            <p className="text-[10px] font-mono text-[#8C8278] uppercase tracking-widest mb-5 font-semibold">
               Credentials
             </p>
             <div className="flex flex-col gap-3">
@@ -53,26 +53,26 @@ export function Education() {
                     style={{
                       background:
                         item.type === "degree"
-                          ? "rgba(0,217,255,0.09)"
-                          : "rgba(59,130,246,0.09)",
+                          ? "rgba(23,125,99,0.09)"
+                          : "rgba(191,130,48,0.09)",
                     }}
                   >
                     {item.type === "degree" ? (
-                      <GraduationCap size={14} className="text-[#00D9FF]" />
+                      <GraduationCap size={14} className="text-[#177D63]" />
                     ) : (
-                      <Award size={14} className="text-[#3B82F6]" />
+                      <Award size={14} className="text-[#BF8230]" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-white text-sm font-semibold leading-snug mb-0.5">
+                    <p className="text-[#1F1B17] text-sm font-semibold leading-snug mb-0.5">
                       {item.degree}
                     </p>
-                    <p className="text-[#64748B] text-xs mb-2">{item.institution}</p>
+                    <p className="text-[#8C8278] text-xs mb-2">{item.institution}</p>
                     <span
                       className={`text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full border ${
                         item.type === "degree"
-                          ? "bg-[rgba(0,217,255,0.08)] text-[#00D9FF] border-[rgba(0,217,255,0.2)]"
-                          : "bg-[rgba(59,130,246,0.08)] text-[#3B82F6] border-[rgba(59,130,246,0.2)]"
+                          ? "bg-[rgba(23,125,99,0.08)] text-[#177D63] border-[rgba(23,125,99,0.2)]"
+                          : "bg-[rgba(191,130,48,0.08)] text-[#BF8230] border-[rgba(191,130,48,0.2)]"
                       }`}
                     >
                       {item.type === "degree" ? "Degree" : "Certification"}
@@ -85,7 +85,7 @@ export function Education() {
 
           {/* Languages */}
           <div>
-            <p className="text-[10px] font-mono text-[#64748B] uppercase tracking-widest mb-5 font-semibold">
+            <p className="text-[10px] font-mono text-[#8C8278] uppercase tracking-widest mb-5 font-semibold">
               Languages
             </p>
             <div className="flex flex-col gap-7">
@@ -98,22 +98,22 @@ export function Education() {
                 >
                   <div className="flex items-center justify-between mb-2.5">
                     <div className="flex items-center gap-2.5">
-                      <span className="text-white text-sm font-bold">{lang.language}</span>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[rgba(0,217,255,0.08)] text-[#00D9FF] border border-[rgba(0,217,255,0.18)]">
+                      <span className="text-[#1F1B17] text-sm font-bold">{lang.language}</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[rgba(23,125,99,0.08)] text-[#177D63] border border-[rgba(23,125,99,0.18)]">
                         {lang.level}
                       </span>
                     </div>
-                    <span className="text-[#00D9FF] text-xs font-mono font-bold">{lang.percent}%</span>
+                    <span className="text-[#177D63] text-xs font-mono font-bold">{lang.percent}%</span>
                   </div>
-                  <div className="h-1.5 rounded-full bg-[#1a2640] overflow-hidden">
+                  <div className="h-1.5 rounded-full bg-[#E6E0D5] overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={isInView ? { width: `${lang.percent}%` } : { width: 0 }}
                       transition={{ duration: 1.0, delay: 0.4 + i * 0.18, ease: "easeOut" }}
                       className="h-full rounded-full"
                       style={{
-                        background: "linear-gradient(90deg, #00D9FF, #3B82F6)",
-                        boxShadow: "0 0 8px rgba(0,217,255,0.4)",
+                        background: "linear-gradient(90deg, #177D63, #BF8230)",
+                        boxShadow: "0 0 8px rgba(23,125,99,0.4)",
                       }}
                     />
                   </div>

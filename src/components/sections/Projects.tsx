@@ -16,7 +16,7 @@ export function Projects() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 50% 80%, rgba(59,130,246,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 40% at 50% 80%, rgba(191,130,48,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -28,10 +28,10 @@ export function Projects() {
           className="mb-12"
         >
           <span className="section-label">Portfolio</span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1F1B17] mb-4">
             Key Projects
           </h2>
-          <p className="text-[#94A3B8] max-w-xl leading-relaxed">
+          <p className="text-[#5A534B] max-w-xl leading-relaxed">
             A selection of automation systems, platforms, and tools I&apos;ve designed and shipped.
           </p>
         </motion.div>
@@ -46,10 +46,10 @@ export function Projects() {
               className="card-base p-5 flex flex-col group relative"
             >
               {/* Top glow line on hover */}
-              <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[rgba(0,217,255,0.5)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[rgba(23,125,99,0.5)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-start justify-between gap-2 mb-3">
-                <h3 className="font-heading font-bold text-white text-sm leading-snug group-hover:text-[#00D9FF] transition-colors duration-200">
+                <h3 className="font-heading font-bold text-[#1F1B17] text-sm leading-snug group-hover:text-[#177D63] transition-colors duration-200">
                   {project.title}
                 </h3>
                 {project.liveUrl ? (
@@ -57,21 +57,21 @@ export function Projects() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-shrink-0 p-1.5 rounded-lg text-[#64748B] hover:text-[#00D9FF] hover:bg-[rgba(0,217,255,0.08)] transition-all"
+                    className="flex-shrink-0 p-1.5 rounded-lg text-[#8C8278] hover:text-[#177D63] hover:bg-[rgba(23,125,99,0.08)] transition-all"
                     aria-label="Live link"
                   >
                     <ArrowUpRight size={14} />
                   </a>
                 ) : (
-                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-[#1E293B] mt-1.5" />
+                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-[#E6E0D5] mt-1.5" />
                 )}
               </div>
 
-              <p className="text-sm text-[#64748B] leading-relaxed mb-4 flex-1">
+              <p className="text-sm text-[#8C8278] leading-relaxed mb-4 flex-1">
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#1a2640]">
+              <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#E6E0D5]">
                 {project.tags.map((tag) => (
                   <span key={tag} className="tag">
                     {tag}
