@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const SECTIONS = [
   "hero",
   "about",
+  "services",
   "competencies",
   "achievements",
   "experience",
