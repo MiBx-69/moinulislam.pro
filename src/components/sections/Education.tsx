@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { GraduationCap, Award } from "lucide-react";
+import { GraduationCap, Award, ExternalLink, Star } from "lucide-react";
 import { education, languages } from "@/data";
 
 export function Education() {
@@ -46,8 +46,18 @@ export function Education() {
                   initial={{ opacity: 0, x: -18 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-                  className="card-base flex items-start gap-3.5 p-4 group"
+                  className={`card-base flex items-start gap-3.5 p-4 group ${
+                    item.featured
+                      ? "!border-[rgba(23,125,99,0.4)] shadow-[0_6px_22px_rgba(23,125,99,0.12)]"
+                      : ""
+                  }`}
                 >
+                  {item.featured && (
+                    <span className="absolute top-0 right-0 flex items-center gap-1 text-[9px] font-mono font-bold uppercase tracking-wider text-[#177D63] bg-[rgba(23,125,99,0.1)] pl-2 pr-2.5 py-1 rounded-bl-xl">
+                      <Star size={10} className="fill-[#177D63]" />
+                      Featured
+                    </span>
+                  )}
                   <div
                     className="mt-0.5 p-2.5 rounded-xl flex-shrink-0 transition-transform group-hover:scale-105"
                     style={{
@@ -68,15 +78,28 @@ export function Education() {
                       {item.degree}
                     </p>
                     <p className="text-[#8C8278] text-xs mb-2">{item.institution}</p>
-                    <span
-                      className={`text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full border ${
-                        item.type === "degree"
-                          ? "bg-[rgba(23,125,99,0.08)] text-[#177D63] border-[rgba(23,125,99,0.2)]"
-                          : "bg-[rgba(191,130,48,0.08)] text-[#BF8230] border-[rgba(191,130,48,0.2)]"
-                      }`}
-                    >
-                      {item.type === "degree" ? "Degree" : "Certification"}
-                    </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span
+                        className={`text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full border ${
+                          item.type === "degree"
+                            ? "bg-[rgba(23,125,99,0.08)] text-[#177D63] border-[rgba(23,125,99,0.2)]"
+                            : "bg-[rgba(191,130,48,0.08)] text-[#BF8230] border-[rgba(191,130,48,0.2)]"
+                        }`}
+                      >
+                        {item.type === "degree" ? "Degree" : "Certification"}
+                      </span>
+                      {item.url && (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold text-[#177D63] hover:text-[#0E5540] transition-colors"
+                        >
+                          View credential
+                          <ExternalLink size={10} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}

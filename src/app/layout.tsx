@@ -63,6 +63,8 @@ export const metadata: Metadata = {
     "Meta Ads expert",
     "hire SEO expert Dhaka",
     "AI automation services",
+    "AWS Certified Prompt Engineering",
+    "Prompt Engineering certification",
     "MiBrand Agency",
     "e-commerce growth specialist",
     "full stack developer Bangladesh",

@@ -41,6 +41,8 @@ export interface Education {
   degree: string;
   institution: string;
   type: "degree" | "certification";
+  url?: string;
+  featured?: boolean;
 }
 
 export interface PersonalInfo {

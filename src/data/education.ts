@@ -2,6 +2,13 @@ import type { Education } from "@/types";
 
 export const education: Education[] = [
   {
+    degree: "Foundations of Prompt Engineering",
+    institution: "AWS Training & Certification",
+    type: "certification",
+    url: "/AWS-Foundations-of-Prompt-Engineering-Certificate.pdf",
+    featured: true,
+  },
+  {
     degree: "High School Diploma",
     institution: "Begum Rasul Jan Abdul Bari High School",
     type: "degree",
