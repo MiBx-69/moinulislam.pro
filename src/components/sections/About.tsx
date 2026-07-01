@@ -17,7 +17,7 @@ const CERTIFICATIONS = [
   {
     name: "HubSpot Certified",
     detail: "SEO Certification",
-    href: "#education",
+    href: "https://app-na2.hubspot.com/academy/achievements/9z7yxlhm/en/1/moinul-islam/seo",
     color: "#177D63",
     bg: "rgba(23,125,99,0.08)",
     border: "rgba(23,125,99,0.28)",

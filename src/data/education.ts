@@ -17,6 +17,7 @@ export const education: Education[] = [
     degree: "HubSpot SEO Certification",
     institution: "HubSpot Academy",
     type: "certification",
+    url: "https://app-na2.hubspot.com/academy/achievements/9z7yxlhm/en/1/moinul-islam/seo",
   },
   {
     degree: "SEMrush SEO Certification",

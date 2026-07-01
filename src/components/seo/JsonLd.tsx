@@ -79,17 +79,30 @@ export function JsonLd() {
           "Cybersecurity",
         ],
         knowsLanguage: ["Bengali", "English", "Hindi"],
-        hasCredential: {
-          "@type": "EducationalOccupationalCredential",
-          name: "Foundations of Prompt Engineering",
-          credentialCategory: "Certificate",
-          recognizedBy: {
-            "@type": "Organization",
-            name: "AWS Training & Certification",
-            url: "https://aws.amazon.com/training/",
+        hasCredential: [
+          {
+            "@type": "EducationalOccupationalCredential",
+            name: "Foundations of Prompt Engineering",
+            credentialCategory: "Certificate",
+            recognizedBy: {
+              "@type": "Organization",
+              name: "AWS Training & Certification",
+              url: "https://aws.amazon.com/training/",
+            },
+            url: `${SITE_URL}/AWS-Foundations-of-Prompt-Engineering-Certificate.pdf`,
           },
-          url: `${SITE_URL}/AWS-Foundations-of-Prompt-Engineering-Certificate.pdf`,
-        },
+          {
+            "@type": "EducationalOccupationalCredential",
+            name: "SEO Certification",
+            credentialCategory: "Certificate",
+            recognizedBy: {
+              "@type": "Organization",
+              name: "HubSpot Academy",
+              url: "https://academy.hubspot.com/",
+            },
+            url: "https://app-na2.hubspot.com/academy/achievements/9z7yxlhm/en/1/moinul-islam/seo",
+          },
+        ],
         sameAs: [personal.linkedin, personal.agencyUrl, personal.website],
       },
       {
