@@ -3,7 +3,26 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { personal } from "@/data";
-import { CheckCircle, MapPin, Globe } from "lucide-react";
+import { CheckCircle, MapPin, Globe, BadgeCheck, ExternalLink } from "lucide-react";
+
+const CERTIFICATIONS = [
+  {
+    name: "AWS Certified",
+    detail: "Prompt Engineering",
+    href: "/AWS-Foundations-of-Prompt-Engineering-Certificate.pdf",
+    color: "#BF8230",
+    bg: "rgba(191,130,48,0.08)",
+    border: "rgba(191,130,48,0.28)",
+  },
+  {
+    name: "HubSpot Certified",
+    detail: "SEO Certification",
+    href: "#education",
+    color: "#177D63",
+    bg: "rgba(23,125,99,0.08)",
+    border: "rgba(23,125,99,0.28)",
+  },
+];
 
 const HIGHLIGHTS = [
   "AI-driven SEO strategies & local ranking campaigns",
@@ -92,6 +111,45 @@ export function About() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Certification badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="mt-9"
+            >
+              <p className="text-[10px] font-mono text-[#8C8278] uppercase tracking-widest mb-3">
+                Certified
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {CERTIFICATIONS.map((cert) => (
+                  <a
+                    key={cert.name}
+                    href={cert.href}
+                    target={cert.href.startsWith("http") || cert.href.endsWith(".pdf") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2.5 pl-2.5 pr-3.5 py-2 rounded-xl bg-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(31,27,23,0.10)]"
+                    style={{ border: `1px solid ${cert.border}` }}
+                  >
+                    <span
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: cert.bg }}
+                    >
+                      <BadgeCheck size={16} style={{ color: cert.color }} />
+                    </span>
+                    <span className="leading-tight">
+                      <span className="block text-xs font-bold text-[#1F1B17]">{cert.name}</span>
+                      <span className="block text-[10px] text-[#8C8278]">{cert.detail}</span>
+                    </span>
+                    <ExternalLink
+                      size={11}
+                      className="text-[#8C8278] opacity-0 group-hover:opacity-100 transition-opacity ml-0.5"
+                    />
+                  </a>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Right: Quick info cards */}
