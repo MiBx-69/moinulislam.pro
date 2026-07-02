@@ -58,7 +58,7 @@ export function About() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="section-label">About Me</span>
+          <span className="section-label">01 · About Me</span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#1F1B17] tracking-[-0.01em] mb-4">
             Professional Summary
           </h2>

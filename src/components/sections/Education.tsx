@@ -27,7 +27,7 @@ export function Education() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="section-label">Background</span>
+          <span className="section-label">08 · Background</span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#1F1B17] tracking-[-0.01em] mb-4">
             Education & Certifications
           </h2>

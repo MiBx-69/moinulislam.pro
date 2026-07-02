@@ -60,7 +60,7 @@ export function Competencies() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="section-label">What I Do</span>
+          <span className="section-label">03 · What I Do</span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#1F1B17] tracking-[-0.01em] mb-4">
             Core Competencies
           </h2>

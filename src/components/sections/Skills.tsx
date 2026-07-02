@@ -42,7 +42,7 @@ export function Skills() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="section-label">Toolkit</span>
+          <span className="section-label">07 · Toolkit</span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#1F1B17] tracking-[-0.01em] mb-4">
             Technical Skills
           </h2>

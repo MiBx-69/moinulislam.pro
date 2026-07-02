@@ -1,5 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
+import { Marquee } from "@/components/ui/Marquee";
 import { About } from "@/components/sections/About";
+import { CTABanner } from "@/components/sections/CTABanner";
 import { Services } from "@/components/sections/Services";
 import { Competencies } from "@/components/sections/Competencies";
 import { Achievements } from "@/components/sections/Achievements";
@@ -14,6 +16,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <Marquee />
       <About />
       <Services />
       <Competencies />
@@ -23,6 +26,7 @@ export default function Home() {
       <Skills />
       <Education />
       <FAQ />
+      <CTABanner />
       <Contact />
     </main>
   );

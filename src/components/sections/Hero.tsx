@@ -1,14 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 import { MapPin, Mail, Phone, Globe, Link2, ArrowRight, Download } from "lucide-react";
 import { personal } from "@/data";
 
 export function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  // Parallax: layers drift at different speeds as the hero scrolls away
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const yPhoto = useTransform(scrollYProgress, [0, 1], [0, 110]);
+  const yText = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const heroFade = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   useEffect(() => {
     setMounted(true);
@@ -34,6 +50,7 @@ export function Hero() {
   return (
     <section
       id="hero"
+      ref={sectionRef}
       className="relative min-h-screen flex items-center pt-16 overflow-hidden"
     >
       {/* Multi-layer background */}
@@ -78,6 +95,7 @@ export function Hero() {
             variants={containerVariants}
             initial="hidden"
             animate={mounted ? "visible" : "hidden"}
+            style={{ y: yText, opacity: heroFade }}
             className="order-2 lg:order-1 text-center lg:text-left"
           >
             {/* Available badge */}
@@ -187,11 +205,12 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Avatar */}
+          {/* Right: Avatar (parallax layer) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85, y: 20 }}
-            animate={mounted ? { opacity: 1, scale: 1, y: 0 } : {}}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={mounted ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            style={{ y: yPhoto }}
             className="flex justify-center order-1 lg:order-2"
           >
             <div className="relative w-[18rem] sm:w-[21rem] lg:w-[25rem] aspect-[5/6] mx-auto">

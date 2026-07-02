@@ -93,7 +93,7 @@ export function Achievements() {
           className="mb-14 text-center"
         >
           <span className="text-xs font-mono font-semibold tracking-widest uppercase text-[#177D63] block mb-3">
-            By the Numbers
+            04 · By the Numbers
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#1F1B17] tracking-[-0.01em] mb-4">
             Impact & Achievements

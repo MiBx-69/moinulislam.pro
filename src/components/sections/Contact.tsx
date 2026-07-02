@@ -77,7 +77,7 @@ export function Contact() {
           className="mb-12 text-center max-w-2xl mx-auto"
         >
           <span className="block text-[11px] font-mono font-semibold tracking-widest uppercase text-[#177D63] mb-3">
-            Get in Touch
+            10 · Get in Touch
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#1F1B17] tracking-[-0.01em] mb-4">
             Let&apos;s Build Something Together

@@ -28,7 +28,7 @@ export function Experience() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="section-label">Career</span>
+          <span className="section-label">05 · Career</span>
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-[#1F1B17] tracking-[-0.01em] mb-4">
             Professional Experience
           </h2>
