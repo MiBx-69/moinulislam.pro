@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { ParallaxDecor } from "@/components/ui/ParallaxDecor";
 import { personal } from "@/data";
 import { CheckCircle, MapPin, Globe, BadgeCheck, ExternalLink } from "lucide-react";
 
@@ -50,6 +51,8 @@ export function About() {
             "radial-gradient(ellipse 60% 40% at 20% 60%, rgba(191,130,48,0.04) 0%, transparent 70%)",
         }}
       />
+
+      <ParallaxDecor />
 
       <div className="container-wide relative z-10">
         <motion.div

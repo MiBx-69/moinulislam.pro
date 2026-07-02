@@ -6,6 +6,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { Cursor } from "@/components/ui/Cursor";
+import { IntroLoader } from "@/components/ui/IntroLoader";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 const GTM_ID = "GTM-TM256VS8";
@@ -148,6 +150,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         {/* End Google Tag Manager (noscript) */}
 
+        <IntroLoader />
+        <Cursor />
         <ScrollProgress />
         <Navbar />
         {children}

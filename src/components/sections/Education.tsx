@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { ParallaxDecor } from "@/components/ui/ParallaxDecor";
 import { GraduationCap, Award, ExternalLink, Star } from "lucide-react";
 import { education, languages } from "@/data";
 
@@ -19,6 +20,8 @@ export function Education() {
             "radial-gradient(ellipse 50% 40% at 70% 40%, rgba(191,130,48,0.04) 0%, transparent 70%)",
         }}
       />
+
+      <ParallaxDecor flip />
 
       <div className="container-wide relative z-10">
         <motion.div

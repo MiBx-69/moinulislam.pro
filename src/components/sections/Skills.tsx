@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { ParallaxDecor } from "@/components/ui/ParallaxDecor";
 import {
   Search,
   TrendingUp,
@@ -34,6 +35,8 @@ export function Skills() {
             "radial-gradient(ellipse 50% 40% at 20% 50%, rgba(23,125,99,0.04) 0%, transparent 70%)",
         }}
       />
+
+      <ParallaxDecor flip />
 
       <div className="container-wide relative z-10">
         <motion.div

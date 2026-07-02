@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import { ParallaxDecor } from "@/components/ui/ParallaxDecor";
 import { Plus } from "lucide-react";
 
 const FAQS = [
@@ -35,6 +36,8 @@ export function FAQ() {
   return (
     <section id="faq" className="section-padding relative overflow-hidden" ref={ref}>
       <div className="absolute top-0 left-0 right-0 section-divider" />
+      <ParallaxDecor />
+
       <div className="container-wide relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

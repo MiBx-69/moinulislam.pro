@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { achievements } from "@/data";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -74,6 +74,14 @@ export function Achievements() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
+  // Alternating columns drift at different speeds while scrolling
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const yEven = useTransform(scrollYProgress, [0, 1], [28, -28]);
+  const yOdd = useTransform(scrollYProgress, [0, 1], [64, -64]);
+
   return (
     <section id="achievements" className="section-padding relative overflow-hidden" ref={ref}>
       {/* Background glow */}
@@ -105,7 +113,9 @@ export function Achievements() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {achievements.map((item, i) => (
-            <CounterCard key={item.label} item={item} index={i} isInView={isInView} />
+            <motion.div key={item.label} style={{ y: i % 2 === 0 ? yEven : yOdd }}>
+              <CounterCard item={item} index={i} isInView={isInView} />
+            </motion.div>
           ))}
         </div>
       </div>
