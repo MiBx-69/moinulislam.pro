@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { ParallaxDecor } from "@/components/ui/ParallaxDecor";
 import { GraduationCap, Award, ExternalLink, Star } from "lucide-react";
 import { education, languages } from "@/data";
@@ -11,7 +12,7 @@ export function Education() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="education" className="section-padding relative overflow-hidden" ref={ref}>
+    <section id="education" className="section-padding relative overflow-hidden bg-[#EFEAE1]/70" ref={ref}>
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div
         className="absolute inset-0 pointer-events-none"
@@ -22,6 +23,8 @@ export function Education() {
       />
 
       <ParallaxDecor flip />
+
+      <GhostNumber n="08" flip />
 
       <div className="container-wide relative z-10">
         <motion.div

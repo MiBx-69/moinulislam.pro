@@ -25,6 +25,7 @@ export function Hero() {
   const yPhoto = useTransform(scrollYProgress, [0, 1], [0, 110]);
   const yText = useTransform(scrollYProgress, [0, 1], [0, 40]);
   const heroFade = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const yWord = useTransform(scrollYProgress, [0, 1], [0, 190]);
 
   useEffect(() => {
     setMounted(true);
@@ -69,6 +70,15 @@ export function Hero() {
             "radial-gradient(ellipse 40% 40% at 75% 60%, rgba(191,130,48,0.06) 0%, transparent 60%)",
         }}
       />
+
+      {/* Giant outlined watermark word */}
+      <motion.span
+        aria-hidden="true"
+        style={{ y: yWord, WebkitTextStroke: "2px rgba(23,125,99,0.10)" }}
+        className="absolute top-20 left-1/2 -translate-x-1/2 font-display font-bold text-transparent leading-none select-none pointer-events-none whitespace-nowrap text-[22vw] lg:text-[19vw] tracking-tight"
+      >
+        MOINUL
+      </motion.span>
 
       {/* Animated gradient orbs */}
       <motion.div
@@ -119,7 +129,26 @@ export function Hero() {
               className="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-[#1F1B17] leading-[1.06] tracking-[-0.02em] mb-6"
             >
               Moinul Islam{" "}
-              <span className="italic accent-text font-medium inline-block pr-2 pb-1">Bappi</span>
+              <span className="relative italic accent-text font-medium inline-block pr-2 pb-1">
+                Bappi
+                {/* Hand-drawn underline swash */}
+                <svg
+                  className="absolute -bottom-2 left-0 w-full"
+                  viewBox="0 0 220 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <motion.path
+                    d="M6 14 C 60 4, 150 4, 214 12"
+                    stroke="#BF8230"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={mounted ? { pathLength: 1 } : {}}
+                    transition={{ duration: 0.9, delay: 1.0, ease: "easeOut" }}
+                  />
+                </svg>
+              </span>
             </motion.h1>
 
             {/* Rotating role */}
@@ -295,20 +324,32 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Stats strip */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={mounted ? { opacity: 1 } : {}}
-          transition={{ delay: 1.8, duration: 0.6 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2"
+          initial={{ opacity: 0, y: 24 }}
+          animate={mounted ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 1.2, ease: "easeOut" }}
+          className="mt-14 lg:mt-20"
         >
-          <span className="text-[10px] text-[#C9C0B2] font-mono tracking-widest uppercase">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-8 bg-gradient-to-b from-[#C9C0B2] to-transparent"
-          />
+          <div className="flex flex-wrap items-center justify-center lg:justify-between gap-x-10 gap-y-6 border-t border-[#E6E0D5] pt-8">
+            {[
+              { value: "100+", label: "Projects Delivered" },
+              { value: "5+", label: "Years Experience" },
+              { value: "20+", label: "SEO Retainers Closed" },
+              { value: "85%", label: "Client Retention" },
+            ].map((stat) => (
+              <div key={stat.label} className="flex items-baseline gap-3">
+                <span className="font-display text-3xl sm:text-4xl font-semibold accent-text">
+                  {stat.value}
+                </span>
+                <span className="text-xs font-mono uppercase tracking-widest text-[#8C8278]">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </motion.div>
+
       </div>
     </section>
   );

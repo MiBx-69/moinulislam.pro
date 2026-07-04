@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { ParallaxDecor } from "@/components/ui/ParallaxDecor";
 import { Plus } from "lucide-react";
 
@@ -34,9 +35,11 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="section-padding relative overflow-hidden" ref={ref}>
+    <section id="faq" className="section-padding relative overflow-hidden bg-[#EFEAE1]/70" ref={ref}>
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <ParallaxDecor />
+
+      <GhostNumber n="09" />
 
       <div className="container-wide relative z-10">
         <motion.div

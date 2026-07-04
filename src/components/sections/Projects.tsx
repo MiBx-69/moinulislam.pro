@@ -7,6 +7,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data";
 import type { Project } from "@/types";
@@ -119,6 +120,8 @@ export function Projects() {
             "radial-gradient(ellipse 60% 40% at 50% 80%, rgba(191,130,48,0.04) 0%, transparent 70%)",
         }}
       />
+
+      <GhostNumber n="06" flip />
 
       <div className="container-wide relative z-10">
         <motion.div

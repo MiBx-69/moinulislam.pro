@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { competencies } from "@/data";
 import {
   Search,
@@ -43,7 +44,7 @@ export function Competencies() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="competencies" className="section-padding relative overflow-hidden" ref={ref}>
+    <section id="competencies" className="section-padding relative overflow-hidden bg-[#EFEAE1]/70" ref={ref}>
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div
         className="absolute inset-0 pointer-events-none"
@@ -52,6 +53,8 @@ export function Competencies() {
             "radial-gradient(ellipse 50% 40% at 80% 30%, rgba(23,125,99,0.04) 0%, transparent 70%)",
         }}
       />
+
+      <GhostNumber n="03" />
 
       <div className="container-wide relative z-10">
         <motion.div

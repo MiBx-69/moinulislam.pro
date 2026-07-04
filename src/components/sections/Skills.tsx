@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { ParallaxDecor } from "@/components/ui/ParallaxDecor";
 import {
   Search,
@@ -37,6 +38,8 @@ export function Skills() {
       />
 
       <ParallaxDecor flip />
+
+      <GhostNumber n="07" />
 
       <div className="container-wide relative z-10">
         <motion.div

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { ParallaxDecor } from "@/components/ui/ParallaxDecor";
 import { personal } from "@/data";
 import { CheckCircle, MapPin, Globe, BadgeCheck, ExternalLink } from "lucide-react";
@@ -53,6 +54,8 @@ export function About() {
       />
 
       <ParallaxDecor />
+
+      <GhostNumber n="01" />
 
       <div className="container-wide relative z-10">
         <motion.div

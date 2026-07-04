@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import {
   TrendingUp,
   Bot,
@@ -69,6 +70,8 @@ export function Services() {
             "radial-gradient(ellipse 55% 45% at 50% 30%, rgba(23,125,99,0.05) 0%, transparent 70%)",
         }}
       />
+
+      <GhostNumber n="02" flip />
 
       <div className="container-wide relative z-10">
         <motion.div

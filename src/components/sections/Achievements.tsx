@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { achievements } from "@/data";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -92,6 +93,8 @@ export function Achievements() {
             "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(23,125,99,0.04) 0%, transparent 70%)",
         }}
       />
+
+      <GhostNumber n="04" flip />
 
       <div className="container-wide relative z-10">
         <motion.div

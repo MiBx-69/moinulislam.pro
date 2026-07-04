@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { ChevronDown, MapPin, Briefcase, CheckCircle } from "lucide-react";
 import { experiences } from "@/data";
 
@@ -20,6 +21,8 @@ export function Experience() {
             "radial-gradient(ellipse 60% 40% at 80% 50%, rgba(23,125,99,0.03) 0%, transparent 70%)",
         }}
       />
+
+      <GhostNumber n="05" />
 
       <div className="container-wide relative z-10">
         <motion.div
