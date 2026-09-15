@@ -16,6 +16,11 @@ export interface Project {
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
+  image?: string;
+  gallery?: string[];
+  category?: string;
+  featured?: boolean;
+  metrics?: { label: string; value: string }[];
 }
 
 export interface SkillGroup {
