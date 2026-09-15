@@ -9,7 +9,7 @@ import {
   useTransform,
   type Variants,
 } from "framer-motion";
-import { MapPin, Mail, Phone, Globe, Link2, ArrowRight, Download } from "lucide-react";
+import { Mail, Phone, Globe, Link2, ArrowRight, Download } from "lucide-react";
 import { personal } from "@/data";
 
 export function Hero() {
@@ -117,10 +117,12 @@ export function Hero() {
                 </span>
                 Available for Work
               </span>
-              <span className="flex items-center gap-1.5 text-xs text-[#8C8278] font-medium">
-                <MapPin size={11} className="text-[#177D63]" />
-                {personal.location}
-              </span>
+              <a
+                href={`mailto:${personal.email}`}
+                className="flex items-center gap-2 px-8 h-12 rounded-full font-semibold bg-white text-[#177D63] hover:bg-[#E6E0D5] hover:text-[#0F5342] transition-colors"
+              >
+                Let&apos;s Work Together <ArrowRight size={18} />
+              </a>
             </motion.div>
 
             {/* Name */}
@@ -182,17 +184,17 @@ export function Hero() {
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-3 mb-6">
               <a
-                href="#contact"
+                href="#projects"
                 className="group flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-[#177D63] text-[#F4F1EA] hover:bg-[#13694F] transition-all duration-200 shadow-lg shadow-[rgba(23,125,99,0.25)] hover:shadow-[rgba(23,125,99,0.4)] hover:-translate-y-0.5"
               >
-                Hire for Marketing
+                View Selected Work
                 <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
               <a
                 href="#contact"
                 className="group flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border border-[#BF8230] text-[#BF8230] hover:bg-[rgba(191,130,48,0.1)] transition-all duration-200 hover:-translate-y-0.5"
               >
-                Hire for Dev & Automation
+                Let&apos;s Work Together
                 <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
             </motion.div>
@@ -301,8 +303,8 @@ export function Hero() {
                   <span className="text-[#177D63] text-sm font-bold">✓</span>
                 </div>
                 <div>
-                  <p className="text-[#1F1B17] text-xs font-bold">100+ Projects</p>
-                  <p className="text-[#8C8278] text-[10px]">Done</p>
+                  <p className="text-[#1F1B17] text-xs font-bold">~45% Workload</p>
+                  <p className="text-[#8C8278] text-[10px]">Reduced</p>
                 </div>
               </motion.div>
 
@@ -316,8 +318,8 @@ export function Hero() {
                   <span className="text-[#BF8230] text-sm font-bold">★</span>
                 </div>
                 <div>
-                  <p className="text-[#1F1B17] text-xs font-bold">5+ Years</p>
-                  <p className="text-[#8C8278] text-[10px]">Experience</p>
+                  <p className="text-[#1F1B17] text-xs font-bold">1K+ Daily</p>
+                  <p className="text-[#8C8278] text-[10px]">Orders Auto-Processed</p>
                 </div>
               </motion.div>
             </div>
@@ -333,10 +335,10 @@ export function Hero() {
         >
           <div className="flex flex-wrap items-center justify-center lg:justify-between gap-x-10 gap-y-6 border-t border-[#E6E0D5] pt-8">
             {[
-              { value: "100+", label: "Projects Delivered" },
+              { value: "15+", label: "Problems Solved" },
+              { value: "1K+", label: "Daily Bulk Orders" },
+              { value: "~45%", label: "Workload Reduction" },
               { value: "5+", label: "Years Experience" },
-              { value: "20+", label: "SEO Retainers Closed" },
-              { value: "85%", label: "Client Retention" },
             ].map((stat) => (
               <div key={stat.label} className="flex items-baseline gap-3">
                 <span className="font-display text-3xl sm:text-4xl font-semibold accent-text">

@@ -27,12 +27,12 @@ const CERTIFICATIONS = [
 ];
 
 const HIGHLIGHTS = [
-  "AI-driven SEO strategies & local ranking campaigns",
-  "SaaS-level automation systems (1,000+ processes/sec)",
-  "Multi-channel paid advertising up to $10,000/month",
-  "Shopify e-commerce development (Expert Level)",
-  "End-to-end CRM pipeline architecture",
-  "Linux server administration & cybersecurity practices",
+  "IT & E-commerce operations strategy",
+  "Shopify automation & system architecture",
+  "Internal tool development (CRM, POS, ERP)",
+  "Business process automation (1000+ tasks/sec)",
+  "Logistics & dispatch integration",
+  "High-converting paid advertising architecture",
 ];
 
 export function About() {
@@ -78,8 +78,11 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-3"
           >
-            <p className="text-[#5A534B] text-base md:text-lg leading-relaxed mb-7">
+            <p className="text-[#5A534B] text-base md:text-lg leading-relaxed mb-4">
               {personal.summary}
+            </p>
+            <p className="text-[#1F1B17] font-semibold text-lg md:text-xl italic mb-7 border-l-2 border-[#177D63] pl-4">
+              &quot;Technology is most valuable when it removes friction from the business.&quot;
             </p>
 
             <div className="flex flex-wrap gap-4 mb-9 text-sm">
@@ -180,14 +183,14 @@ export function About() {
               },
               {
                 label: "Freelancing",
-                value: "2021 – Present",
-                sub: "SEO & Digital Marketing",
+                value: "IT & E-commerce Consultant",
+                sub: "Self-Employed",
                 color: "#177D63",
               },
               {
                 label: "Expertise",
-                value: "SEO + AI + Automation",
-                sub: "E-commerce & Systems",
+                value: "Shopify + Automation",
+                sub: "Operations Systems",
                 color: "#BF8230",
               },
             ].map((card, i) => (

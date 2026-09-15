@@ -8,9 +8,12 @@ import {
   useSpring,
 } from "framer-motion";
 import { GhostNumber } from "@/components/ui/GhostNumber";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { projects } from "@/data";
 import type { Project } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
+import { DemoImage } from "@/components/ui/DemoImage";
 
 function TiltCard({
   project,
@@ -106,6 +109,83 @@ function TiltCard({
   );
 }
 
+function FeaturedProject({
+  project,
+  isInView,
+}: {
+  project: Project;
+  isInView: boolean;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+      className="col-span-1 sm:col-span-2 lg:col-span-3 mb-10 md:mb-16"
+    >
+      <Link href={`/projects/${project.id}`} className="block group relative rounded-[24px] md:rounded-[32px] overflow-hidden bg-[#1F1B17] border border-[#3A332B] shadow-2xl transition-all duration-500 hover:border-[#5A534B]">
+        {/* Subtle radial ambient lighting */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_50%,rgba(191,130,48,0.04)_0%,transparent_50%)] pointer-events-none" />
+        
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16">
+          
+          {/* LEFT: Content */}
+          <div className="px-6 pt-10 pb-4 md:p-12 lg:p-16 lg:pr-0 flex flex-col justify-center relative z-10">
+            <span className="text-[#BF8230] text-xs md:text-sm font-mono tracking-widest uppercase mb-4 block">
+              Flagship Case Study
+            </span>
+            <h3 className="font-display text-4xl md:text-5xl lg:text-[64px] font-semibold text-[#F4F1EA] mb-6 leading-tight group-hover:text-[#BF8230] transition-colors duration-400">
+              {project.title}
+            </h3>
+            <p className="text-[#8C8278] text-base md:text-lg leading-relaxed mb-10 max-w-[480px]">
+              {project.description}
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-4 mb-10 pb-10 border-b border-[#3A332B]">
+              <div>
+                <p className="font-display text-3xl md:text-4xl font-bold text-[#F4F1EA] mb-1.5">15+</p>
+                <p className="text-[#8C8278] text-[10px] md:text-xs font-mono uppercase tracking-widest">Problems Solved</p>
+              </div>
+              <div>
+                <p className="font-display text-3xl md:text-4xl font-bold text-[#F4F1EA] mb-1.5">~25%</p>
+                <p className="text-[#8C8278] text-[10px] md:text-xs font-mono uppercase tracking-widest">Workload Reduced</p>
+              </div>
+              <div className="col-span-2 md:col-span-1">
+                <p className="font-display text-3xl md:text-4xl font-bold text-[#F4F1EA] mb-1.5">1K+</p>
+                <p className="text-[#8C8278] text-[10px] md:text-xs font-mono uppercase tracking-widest">Bulk Processing</p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2.5 mb-12">
+              {project.tags.map((tag) => (
+                <span key={tag} className="px-3 py-1.5 rounded-full border border-[#3A332B] text-[#A3998F] text-xs font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="inline-flex items-center gap-2 text-[#BF8230] font-semibold group-hover:brightness-125 transition-all">
+              <span className="group-hover:underline underline-offset-4 decoration-2">Read the Full Case Study</span> 
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+
+          {/* RIGHT: Visual */}
+          <div className="relative px-6 pb-10 md:px-12 md:pb-12 lg:p-16 lg:pl-0 flex flex-col justify-center items-center w-full h-full">
+            <DemoImage 
+              src="/demo-data/dashboard.png" 
+              alt="MiBx Dispatch Dashboard" 
+              type="browser"
+              containerClassName="w-full transform group-hover:-translate-y-2 group-hover:scale-[1.01] transition-transform duration-700 shadow-[0_20px_60px_rgba(0,0,0,0.5)]" 
+            />
+          </div>
+
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
 export function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -141,9 +221,12 @@ export function Projects() {
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.map((project, i) => (
-            <TiltCard key={project.id} project={project} index={i} isInView={isInView} />
-          ))}
+          {projects.map((project, i) => {
+            if (project.id === "mibx-dispatch") {
+              return <FeaturedProject key={project.id} project={project} isInView={isInView} />;
+            }
+            return <TiltCard key={project.id} project={project} index={i} isInView={isInView} />;
+          })}
         </div>
       </div>
     </section>

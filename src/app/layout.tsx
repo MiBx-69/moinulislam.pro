@@ -39,9 +39,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const SITE_URL = "https://moinulislam.pro";
-const TITLE = "Moinul Islam Bappi — IT Executive, SEO Specialist & AI Automation Engineer";
+const TITLE = "Moinul Islam Bappi — IT Executive, E-commerce Automation & AI Systems";
 const DESCRIPTION =
-  "Moinul Islam Bappi is an IT Executive, SEO Specialist, Digital Marketing Strategist and AI Automation Engineer in Dhaka, Bangladesh. Founder of MiBrand Agency — ranking businesses on Google's first page, scaling Shopify e-commerce, and building AI automation systems for clients worldwide.";
+  "Moinul Islam Bappi is an IT Executive specializing in e-commerce operations, Shopify, automation, AI systems, SEO, business intelligence and custom digital platforms.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -54,22 +54,14 @@ export const metadata: Metadata = {
   keywords: [
     "Moinul Islam",
     "Moinul Islam Bappi",
-    "IT Executive Bangladesh",
-    "SEO Specialist Dhaka",
+    "IT Executive",
+    "E-commerce Automation",
+    "Shopify Automation",
+    "AI Systems",
+    "Digital Operations",
+    "Business Intelligence",
+    "Logistics Automation",
     "SEO Expert Bangladesh",
-    "Digital Marketing Strategist Bangladesh",
-    "AI Automation Engineer",
-    "Shopify Expert Bangladesh",
-    "Local SEO Dhaka",
-    "Google Ads expert Bangladesh",
-    "Meta Ads expert",
-    "hire SEO expert Dhaka",
-    "AI automation services",
-    "AWS Certified Prompt Engineering",
-    "Prompt Engineering certification",
-    "MiBrand Agency",
-    "e-commerce growth specialist",
-    "full stack developer Bangladesh",
   ],
   authors: [{ name: "Moinul Islam Bappi", url: SITE_URL }],
   creator: "Moinul Islam Bappi",
@@ -88,13 +80,12 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     siteName: "Moinul Islam Bappi",
     locale: "en_US",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Moinul Islam Bappi — IT Executive, SEO & AI Automation" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Moinul Islam Bappi — IT Executive, E-commerce Automation & AI Systems" }],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
-    description:
-      "IT Executive, SEO Specialist & AI Automation Engineer in Dhaka, Bangladesh. Founder of MiBrand Agency.",
+    description: DESCRIPTION,
     images: ["/og-image.png"],
   },
   robots: {
@@ -122,7 +113,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" data-scroll-behavior="smooth" className="scroll-smooth antialiased">
       <head>
         {/* Google Tag Manager */}
         <Script id="gtm-base" strategy="afterInteractive">
