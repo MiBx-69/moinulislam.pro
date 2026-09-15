@@ -155,9 +155,11 @@ export function Hero() {
 
             {/* Rotating role */}
             <motion.div variants={itemVariants} className="flex items-center justify-center lg:justify-start gap-3 mb-8">
-              <span className="h-px w-8 bg-[#177D63]/50 hidden lg:block" />
-              <span className="text-[#8C8278] text-xs uppercase tracking-[0.2em] font-mono">I am a</span>
-              <div className="overflow-hidden h-9 flex items-center">
+              <span className="h-px w-8 bg-[#177D63]/50 hidden lg:block flex-shrink-0" />
+              <span className="text-[#8C8278] text-xs uppercase tracking-[0.2em] font-mono w-[72px] sm:w-[76px] text-left flex-shrink-0">
+                I am {['A', 'E', 'I', 'O', 'U'].includes(personal.roles[roleIndex].charAt(0).toUpperCase()) ? 'an' : 'a'}
+              </span>
+              <div className="min-h-[56px] sm:min-h-[36px] flex items-center overflow-visible">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roleIndex}
@@ -165,7 +167,7 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -18 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="font-display italic font-bold text-xl sm:text-2xl text-[#0B4A38] whitespace-nowrap"
+                    className="font-display italic font-bold text-xl sm:text-2xl text-[#0B4A38] leading-tight text-left"
                   >
                     {personal.roles[roleIndex]}
                   </motion.span>

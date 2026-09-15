@@ -12,8 +12,24 @@ export interface Experience {
 export interface Project {
   id: string;
   title: string;
-  description: string;
+  description: string; // Short description
+  fullDescription?: string;
+  category?: string;
+  year?: string;
+  role?: string;
+  company?: string;
+  status?: string;
+  featured?: boolean;
+  image?: string;
+  imageType?: "browser" | "mobile" | "minimal";
   tags: string[];
+  problem?: string[]; // Paragraphs of the problem
+  solution?: string[]; // Paragraphs of the solution
+  features?: string[]; // Bullet points
+  results?: {
+    value: string;
+    label: string;
+  }[];
   liveUrl?: string;
   githubUrl?: string;
 }

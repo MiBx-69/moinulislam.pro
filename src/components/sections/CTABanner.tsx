@@ -78,18 +78,18 @@ export function CTABanner() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-2.5 px-7 py-3.5 rounded-2xl font-bold text-sm bg-[#25D366] text-white hover:bg-[#1fbd5a] transition-all duration-200 shadow-[0_14px_36px_rgba(37,211,102,0.35)] hover:-translate-y-0.5"
+            className="group flex items-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-sm bg-[#25D366] text-white hover:bg-[#1fbd5a] transition-all duration-200 shadow-[0_14px_36px_rgba(37,211,102,0.35)] hover:-translate-y-0.5"
           >
-            <MessageCircle size={17} fill="white" />
+            <MessageCircle size={18} fill="white" />
             Start on WhatsApp
-            <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
           </a>
           <a
             href="#contact"
-            className="group flex items-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-sm border border-[rgba(248,246,241,0.35)] text-[#F8F6F1] hover:bg-[rgba(248,246,241,0.08)] transition-all duration-200 hover:-translate-y-0.5"
+            className="group flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-sm border border-[rgba(248,246,241,0.35)] text-[#F8F6F1] hover:bg-[rgba(248,246,241,0.08)] transition-all duration-200 hover:-translate-y-0.5"
           >
-            All contact options
-            <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+            AI contact guide
+            <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
           </a>
         </motion.div>
       </div>

@@ -3,11 +3,11 @@ import type { PersonalInfo } from "@/types";
 export const personal: PersonalInfo = {
   name: "Moinul Islam Bappi",
   roles: [
+    "Shopify Specialist",
+    "E-commerce Automation Specialist",
     "IT Executive",
-    "E-commerce Automation",
-    "Shopify",
-    "AI Systems",
-    "Digital Operations",
+    "Digital Operations Specialist",
+    "AI Systems Specialist",
   ],
   tagline: "Building systems that make businesses faster, smarter and easier to operate.",
   summary:
